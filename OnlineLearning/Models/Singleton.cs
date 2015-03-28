@@ -44,5 +44,18 @@ namespace OnlineLearning.Models
         #endregion
 
 
+        #region Score
+        //数据库上下文单例
+        protected Models.Score Score;
+
+        /// <summary>
+        /// 获取数据库上下文
+        /// </summary>
+        /// <returns></returns>
+        public Models.Score GetScore()
+        {
+            return Score ?? (Score = new Score());
+        }
+        #endregion
     }
 }

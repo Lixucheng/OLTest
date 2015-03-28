@@ -1,0 +1,33 @@
+Account
+	name 名字
+        studentnum 学号
+        class
+	sex   可以为空
+	AGE   可以为空
+	password
+	pic 头像地址 可以为空
+teacherAccount
+	Pic sex age可空
+Answer
+	questionId 答案所属的问题
+        studentId答案所属的学生
+        TestId 答案所属考试
+        ansewr1 答案
+        都不能为空
+Question
+        public int Id { get; set; }
+        public string A_op { get; set; }四个选项的答案
+        public string B_op { get; set; }
+        public string C_op { get; set; }
+        public string D_op { get; set; }
+        public string correct_op { get; set; }正确选项
+        public string Image { get; set; }可空
+        public int PartId { get; set; }所属单元
+Score
+    {
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public int TestId { get; set; }
+        public double Score1 { get; set; }都不能为空
+    }
+}
