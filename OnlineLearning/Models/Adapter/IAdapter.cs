@@ -7,14 +7,16 @@ namespace OnlineLearning.Models.Adapter
 {
     public class IAdapter
     {
-        protected OnlineLearningEntities db;
+        
 
-        protected Singleton sgt;
-
-        public IAdapter()
+        protected Singleton Sgt
         {
-            sgt = new Singleton();
-            db = sgt.GetDbContext();
+            get { return HttpContext.Current.Items["_Singleton"] as Singleton; }
+        }
+
+        protected OnlineLearningEntities Db
+        {
+            get { return Sgt.GetDbContext(); }
         }
     }
 }
