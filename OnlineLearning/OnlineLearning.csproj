@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -161,6 +163,47 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Adapter\IAdapter.cs" />
+    <Compile Include="Models\Answer.cs">
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelOnline.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOnline.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelOnline.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelOnline.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOnline.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\part.cs">
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Question.cs">
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Score.cs">
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Singleton.cs" />
+    <Compile Include="Models\TeacherAccount.cs">
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.cs">
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test_question.cs">
+      <DependentUpon>ModelOnline.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -173,6 +216,23 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ModelOnline.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelOnline.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelOnline.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelOnline.edmx</DependentUpon>
+      <LastGenOutput>ModelOnline.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelOnline.edmx.diagram">
+      <DependentUpon>ModelOnline.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ModelOnline.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelOnline.edmx</DependentUpon>
+      <LastGenOutput>ModelOnline.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -205,7 +265,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -213,6 +272,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

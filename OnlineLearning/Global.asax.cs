@@ -20,10 +20,13 @@ namespace OnlineLearning
 
         protected void Application_BeginRequest()
         {
+            HttpContext.Current.Items["_Singleton"] = new Models.Singleton();
         }
 
         protected void Application_EndRequest()
         {
+            var sgt = HttpContext.Current.Items["_Singleton"] as Models.Singleton;
+            if (sgt != null) sgt.Dispose();
         }
 
     }
