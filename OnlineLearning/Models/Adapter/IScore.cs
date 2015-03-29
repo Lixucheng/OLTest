@@ -35,7 +35,7 @@ namespace OnlineLearning.Models.Adapter
                 throw new Exception("Score为空！");
             }
             //此函数还未实现 用于判断是否存在testid对应测试
-            if(sgt.GetTestAdapter().TestExist(testid)==false)
+            if(Sgt.GetTest().TestExist(testid)==false)
             {
                 throw new Exception("不存在该测试！");
             }

@@ -46,15 +46,30 @@ namespace OnlineLearning.Models
 
         #region Score
         //数据库上下文单例
-        protected Models.Score Score;
+        protected Models.Adapter.IScore Score;
 
         /// <summary>
         /// 获取数据库上下文
         /// </summary>
         /// <returns></returns>
-        public Models.Score GetScore()
+        public Models.Adapter.IScore GetScore()
         {
-            return Score ?? (Score = new Score());
+            return Score ?? (Score = new Adapter.IScore());
+        }
+        #endregion
+
+
+        #region Test
+        //数据库上下文单例
+        protected Adapter.ITest Test;
+
+        /// <summary>
+        /// 获取数据库上下文
+        /// </summary>
+        /// <returns></returns>
+        public Adapter.ITest GetTest()
+        {
+            return Test ?? (Test = new Adapter.ITest());
         }
         #endregion
     }
