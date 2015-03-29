@@ -20,5 +20,6 @@ namespace OnlineLearning.Models
         public string Pic { get; set; }
         public string Sex { get; set; }
         public Nullable<int> Age { get; set; }
+        public string Email { get; set; }
     }
 }
