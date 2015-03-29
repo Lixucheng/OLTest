@@ -41,11 +41,11 @@ namespace OnlineLearning.Models.Adapter
             {
                 throw new Exception("不存在该测试！");
             }
-            //此函数还未实现  用于判断是否存在studentid 对应学生
-            if(sgt.GetStudentAdapter().StudentExist(studentid)==false)
-            {
-                throw new Exception("不存在该学生！");
-            }
+            //Todo:此函数还未实现  用于判断是否存在studentid 对应学生
+            //if(sgt.GetStudentAdapter().StudentExist(studentid)==false)
+            //{
+            //    throw new Exception("不存在该学生！");
+            //}
 
             var tmp = Db.Score.FirstOrDefault(e => e.StudentId == studentid && e.TestId == testid);
             if(tmp!=null)

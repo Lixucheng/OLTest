@@ -31,15 +31,15 @@ namespace OnlineLearning.Models
 
         #region Account
         //数据库上下文单例
-        protected Models.Account Account;
+        protected Models.Adapter.IAccount Account;
 
         /// <summary>
         /// 获取数据库上下文
         /// </summary>
         /// <returns></returns>
-        public Models.Account GetAccount()
+        public Models.Adapter.IAccount GetAccount()
         {
-            return Account ?? (Account = new Account());
+            return Account ?? (Account = new Adapter.IAccount());
         }
         #endregion
 

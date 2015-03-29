@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f213bd44acc0400fa42a89dfdf218040" Name="Diagram1">
-        <EntityTypeShape EntityType="OnlineLearningModel.Account" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineLearningModel.Account" Width="1.5" PointX="0.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineLearningModel.Answer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineLearningModel.part" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineLearningModel.Question" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
