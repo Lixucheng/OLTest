@@ -7,7 +7,8 @@ using System.Web;
 namespace OnlineLearning.Models.Adapter
 {
     public class IScore:Models.Adapter.IAdapter
-    {
+    {   
+        //判断studentid等是否输入的函数还未完成，完成后将-1等替代
         #region 创建新成绩 +int Add(int studentid=-1,int testid=-1,double score=-1
         /// <summary>
         /// 创建新成绩   
