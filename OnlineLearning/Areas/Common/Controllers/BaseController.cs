@@ -70,6 +70,10 @@ namespace OnlineLearning.Areas.Common.Controllers
 
         }
 
+
+        /// <summary>
+        /// test
+        /// </summary>
         public void Login()
         {
             Login(201392301, "lxc123");
@@ -81,5 +85,7 @@ namespace OnlineLearning.Areas.Common.Controllers
             var y = Request.Cookies["login"];
             return Redirect(y.Values["StudentNum"]);
         }
+
+  
     }
 }
