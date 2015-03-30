@@ -72,5 +72,19 @@ namespace OnlineLearning.Models
             return Test ?? (Test = new Adapter.ITest());
         }
         #endregion
+
+        #region teacherAccount
+        //数据库上下文单例
+        protected Models.TeacherAccount TeacherAccount;
+
+        /// <summary>
+        /// 获取数据库上下文
+        /// </summary>
+        /// <returns></returns>
+        public Models.TeacherAccount GetTeacherAccount()
+        {
+            return TeacherAccount ?? (TeacherAccount = new TeacherAccount());
+        }
+        #endregion
     }
 }
