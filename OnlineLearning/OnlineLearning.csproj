@@ -167,6 +167,7 @@
       <DependentUpon>ModelOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Adapter\IAdapter.cs" />
+    <Compile Include="Models\Adapter\IQuestion.cs" />
     <Compile Include="Models\Adapter\IScore.cs" />
     <Compile Include="Models\Adapter\ITest.cs" />
     <Compile Include="Models\Answer.cs">

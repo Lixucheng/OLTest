@@ -72,5 +72,20 @@ namespace OnlineLearning.Models
             return Test ?? (Test = new Adapter.ITest());
         }
         #endregion
+
+
+        #region Question
+        //数据库上下文单例
+        protected Models.Adapter.IQuestion Question;
+
+        /// <summary>
+        /// 获取数据库上下文
+        /// </summary>
+        /// <returns></returns>
+        public Models.Adapter.IQuestion GetQuestion()
+        {
+            return Question ?? (Question = new Adapter.IQuestion());
+        }
+        #endregion
     }
 }
