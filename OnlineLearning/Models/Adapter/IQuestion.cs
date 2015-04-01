@@ -123,17 +123,17 @@ namespace OnlineLearning.Models.Adapter
         public bool Update(int keyid, string aop, string bop, string cop, string dop, string correctop, string image, int partid)
         {
             var question=Db.Question.Find(keyid);
-            if(question==null)
+            if (question == null)
             {
                 throw new Exception("不存在该问题！");
             }
 
             //abcd选项不能为空且不能有重复
-            if(aop==null)
+            if (String.IsNullOrEmpty(aop))
             {
                 throw new ArgumentNullException("A选项为空！");
             }
-            if(bop==null)
+            if (String.IsNullOrEmpty(bop))
             {
                 throw new ArgumentNullException("B选项为空！");
             }
@@ -141,7 +141,7 @@ namespace OnlineLearning.Models.Adapter
             {
                 throw new Exception("A,B选项重复！");
             }
-            if(cop==null)
+            if (String.IsNullOrEmpty(cop))
             {
                 throw new ArgumentNullException("C选项为空！");
             }
@@ -149,7 +149,7 @@ namespace OnlineLearning.Models.Adapter
             {
                 throw new Exception("C与A，B选项有所重复！");
             }
-            if(dop==null)
+            if (String.IsNullOrEmpty(dop))
             {
                 throw new ArgumentNullException("D选项为空！");
             }
