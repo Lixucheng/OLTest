@@ -9,26 +9,26 @@ namespace OnlineLearning.Models.Adapter
 {
     public class IQuestion:Models.Adapter.IAdapter
     {
-        //partid未解决
-        #region 创建问题  + int Add(string aop,string bop,string cop,string dop,string image,int partid)
+
+        #region 创建问题  + int Add(string aop,string bop,string cop,string dop,string correctop,string image,int partid)
         /// <summary>
         /// 创建问题
         /// </summary>
-        /// <param name="aop"></param>
-        /// <param name="bop"></param>
-        /// <param name="cop"></param>
-        /// <param name="dop"></param>
+        /// <param name="aop">answerA</param>
+        /// <param name="bop">answer B</param>
+        /// <param name="cop">answer C</param>
+        /// <param name="dop">answer D</param>
         /// <param name="image"></param>
-        /// <param name="partid"></param>
+        /// <param name="partid">所属单元id</param>
         /// <returns></returns>
-        public int Add(string aop,string bop,string cop,string dop,string image,int partid)
+        public int Add(string aop,string bop,string cop,string dop,string correctop,string image,int partid)
         {   
             //ABCD　四个选项不能为空
-            if(aop==null)
+            if(String.IsNullOrEmpty(aop))
             {
                 throw new ArgumentNullException("A选项为空！");
             }
-            if(bop==null)
+            if(String.IsNullOrEmpty(bop))
             {
                 throw new ArgumentNullException("B选项为空！");
             }
@@ -36,7 +36,7 @@ namespace OnlineLearning.Models.Adapter
             {
                 throw new Exception("A,B选项重复！");
             }
-            if(cop==null)
+            if(String.IsNullOrEmpty(cop))
             {
                 throw new ArgumentNullException("C选项为空！");
             }
@@ -44,7 +44,7 @@ namespace OnlineLearning.Models.Adapter
             {
                 throw new Exception("C与A，B选项有所重复！");
             }
-            if(dop==null)
+            if(String.IsNullOrEmpty(dop))
             {
                 throw new ArgumentNullException("D选项为空！");
             }
@@ -53,12 +53,30 @@ namespace OnlineLearning.Models.Adapter
                 throw new Exception("D选项与A,B,C选项有所重复！");
             }
 
+            //正确答案不能为空 且与ABCD其中之一相符
+            if(String.IsNullOrEmpty(correctop))
+            {
+                
+                throw new ArgumentNullException("正确答案为空！");
+            }
+
+            if(correctop!=aop&&correctop!=bop&&correctop!=cop&&correctop!=dop)
+            {
+                throw new Exception("答案不存在于ABCD四个选项中！");
+            }
+            var x=Db.part.Find(partid);
+            if(x==null)
+            {
+                throw new Exception("不存在该问题所属单元！");
+            }
+
             var　question=new Question()
             {
                 A_op=aop,
                 B_op=bop,
                 C_op=cop,
                 D_op=dop,
+                correct_op=correctop,
                 Image=image,
                 PartId=partid
             };
@@ -89,7 +107,7 @@ namespace OnlineLearning.Models.Adapter
         }
         #endregion
 
-        //partid未解决
+        
         #region 修改问题 +bool Update(int keyid,string aop,string bop,string cop,string dop,string image,int partid)
         /// <summary>
         /// 修改问题
@@ -102,7 +120,7 @@ namespace OnlineLearning.Models.Adapter
         /// <param name="image"></param>
         /// <param name="partid"></param>
         /// <returns></returns>
-        public bool Update(int keyid,string aop,string bop,string cop,string dop,string image,int partid)
+        public bool Update(int keyid, string aop, string bop, string cop, string dop, string correctop, string image, int partid)
         {
             var question=Db.Question.Find(keyid);
             if(question==null)
@@ -140,10 +158,29 @@ namespace OnlineLearning.Models.Adapter
                 throw new Exception("D选项与A,B,C选项有所重复！");
             }
 
+
+            //正确答案不能为空 且与ABCD其中之一相符
+            if (String.IsNullOrEmpty(correctop))
+            {
+
+                throw new ArgumentNullException("正确答案为空！");
+            }
+
+            if (correctop != aop && correctop != bop && correctop != cop && correctop != dop)
+            {
+                throw new Exception("答案不存在于ABCD四个选项中！");
+            }
+            var x = Db.part.Find(partid);
+            if (x == null)
+            {
+                throw new Exception("不存在该问题所属单元！");
+            }
+
             question.A_op = aop;
             question.B_op = bop;
             question.C_op = cop;
             question.D_op = dop;
+            question.correct_op = correctop;
             question.PartId=partid;
             question.Image = image;
 
