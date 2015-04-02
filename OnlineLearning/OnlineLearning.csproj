@@ -177,6 +177,7 @@
     <Compile Include="Models\Adapter\IScore.cs" />
     <Compile Include="Models\Adapter\ITeacherAccount.cs" />
     <Compile Include="Models\Adapter\ITest.cs" />
+    <Compile Include="Models\Adapter\ITest_question.cs" />
     <Compile Include="Models\Answer.cs">
       <DependentUpon>ModelOnline.tt</DependentUpon>
     </Compile>
