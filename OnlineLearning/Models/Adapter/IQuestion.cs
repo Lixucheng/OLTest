@@ -211,5 +211,16 @@ namespace OnlineLearning.Models.Adapter
         }
         #endregion
 
+        /// <summary>
+        /// 是否存在
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool QuestionExist(int id)
+        {
+            var x = Db.Question.Find(id);
+            return x != null;
+        }
+
     }
 }

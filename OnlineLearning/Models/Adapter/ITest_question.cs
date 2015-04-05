@@ -16,6 +16,14 @@ namespace OnlineLearning.Models.Adapter
         /// <returns></returns>
         public bool Add(int testid, int questionid)
         {
+            if (!Sgt.GetQuestion().QuestionExist(questionid))
+            {
+                throw new Exception("不存在此question");
+            }
+            if (!Sgt.GetTest().TestExist(testid))
+            {
+                throw new Exception("不存在此test");
+            }
             var x = Db.Test_question.Where(e => e.QuestionId == questionid && e.TestId == testid).ToList();
             if (x.Count > 0)
             {
@@ -36,6 +44,14 @@ namespace OnlineLearning.Models.Adapter
         /// <returns></returns>
         public bool Update(int id, int testid, int questionid)
         {
+            if (!Sgt.GetQuestion().QuestionExist(questionid))
+            {
+                throw new Exception("不存在此question");
+            }
+            if (!Sgt.GetTest().TestExist(testid))
+            {
+                throw new Exception("不存在此test");
+            }
             var x = Db.Test_question.Find(id);
             if (x==null)
             {
