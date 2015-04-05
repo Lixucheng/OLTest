@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.Ajax.Utilities;
 
 namespace OnlineLearning.Models.Adapter
 {
@@ -22,13 +23,18 @@ namespace OnlineLearning.Models.Adapter
         /// 添加
         /// </summary>
         /// <param name="x"></param>
+        /// <param name="time"></param>
         /// <returns></returns>
-        public bool Add(String x)
+        public bool Add(String x,TimeSpan time)
         {
             if (String.IsNullOrEmpty(x))
             {
                 throw new Exception("name不能为空");
             }
+            if (time == TimeSpan.Zero)
+            {
+                throw new Exception("时间不能为0");
+            }      
             var t=new Test {Name = x};
             Db.Test.Add(t);
             Db.SaveChanges();
@@ -56,11 +62,19 @@ namespace OnlineLearning.Models.Adapter
         /// <param name="id"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public bool Update(int id, string name)
+        public bool Update(int id, string name, TimeSpan time)
         {
             var x = Db.Test.Find(id);
             if (x == null)
                 throw new Exception("没有你改啥！");
+            if (String.IsNullOrEmpty(name))
+            {
+                throw new Exception("name不能为空");
+            }
+            if (time == TimeSpan.Zero)
+            {
+                throw new Exception("时间不能为0");
+            }      
             x.Name = name;
             Db.SaveChanges();
             return true;
