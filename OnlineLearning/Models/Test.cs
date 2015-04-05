@@ -16,5 +16,6 @@ namespace OnlineLearning.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public System.TimeSpan Time { get; set; }
     }
 }
