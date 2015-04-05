@@ -211,6 +211,7 @@ namespace OnlineLearning.Models.Adapter
         }
         #endregion
 
+        #region 查找是否存在
         /// <summary>
         /// 是否存在
         /// </summary>
@@ -221,6 +222,7 @@ namespace OnlineLearning.Models.Adapter
             var x = Db.Question.Find(id);
             return x != null;
         }
+        #endregion
 
     }
 }
