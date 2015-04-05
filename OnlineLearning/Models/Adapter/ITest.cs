@@ -61,6 +61,7 @@ namespace OnlineLearning.Models.Adapter
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
+        /// <param name="time"></param>
         /// <returns></returns>
         public bool Update(int id, string name, TimeSpan time)
         {
