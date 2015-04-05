@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+@section head{
+    <link href="~/Scripts/bower_components/amazeui/dist/css/amazeui.min.css" rel="stylesheet" />
+    <link href="~/Content/adminLayout.css" rel="stylesheet" />
+    @RenderSection("head", false)
+}
+@Html.Action("_Header", new { area = "Common", controller = "Base" })
+<div class="am-cf admin-main">
+
+    @RenderSection("menu", false)
+    <!-- content start -->
+    <div class="admin-content">
+        @RenderBody()
+    </div>
+    <!-- content end -->
+
+</div>
+
+<a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+<footer>
+    <hr>
+    <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+</footer>
+
+@section scripts{
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="/Scripts/AmazeUIAsset/polyfill/rem.min.js"></script>
+    <script src="/Scripts/AmazeUIAsset/polyfill/respond.min.js"></script>
+    <script src="/Scripts/bower_components/amazeui/dist/js/amazeui.legacy.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="/Scripts/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/Scripts/bower_components/amazeui/dist/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+    @RenderSection("scripts", false)
+}
+
