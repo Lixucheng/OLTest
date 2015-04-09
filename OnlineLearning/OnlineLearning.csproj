@@ -173,9 +173,12 @@
     </Compile>
     <Compile Include="Models\Adapter\IAccount.cs" />
     <Compile Include="Models\Adapter\IAdapter.cs" />
+    <Compile Include="Models\Adapter\IAnswer.cs" />
+    <Compile Include="Models\Adapter\IQuestion.cs" />
     <Compile Include="Models\Adapter\IScore.cs" />
     <Compile Include="Models\Adapter\ITeacherAccount.cs" />
     <Compile Include="Models\Adapter\ITest.cs" />
+    <Compile Include="Models\Adapter\ITest_question.cs" />
     <Compile Include="Models\Answer.cs">
       <DependentUpon>ModelOnline.tt</DependentUpon>
     </Compile>
@@ -217,6 +220,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\adminLayout.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -246,8 +250,11 @@
     <Content Include="Areas\Common\Views\web.config" />
     <Content Include="Areas\Students\Views\web.config" />
     <Content Include="Areas\Students\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Students\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Students\Views\Index\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Menu.cshtml" />
+    <Content Include="Areas\Students\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Students\Views\Shared\_Menu.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -270,19 +277,20 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Admin\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Common\Models\" />
     <Folder Include="Areas\Common\Views\Bace\" />
     <Folder Include="Areas\Common\Views\Shared\" />

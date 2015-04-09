@@ -86,5 +86,50 @@ namespace OnlineLearning.Models
             return TeacherAccount ?? (TeacherAccount = new TeacherAccount());
         }
         #endregion
+
+        #region Answer
+        //数据库上下文单例
+        protected Models.Answer Answer;
+
+        /// <summary>
+        /// 获取数据库上下文
+        /// </summary>
+        /// <returns></returns>
+        public Models.Answer GetAnswer()
+        {
+            return Answer ?? (Answer = new Answer());
+        }
+        #endregion
+
+
+        #region Question
+        //数据库上下文单例
+        protected Models.Adapter.IQuestion Question;
+
+        /// <summary>
+        /// 获取数据库上下文
+        /// </summary>
+        /// <returns></returns>
+        public Models.Adapter.IQuestion GetQuestion()
+        {
+            return Question ?? (Question = new Adapter.IQuestion());
+        }
+        #endregion
+
+
+        #region ITest_question
+        //数据库上下文单例
+        protected Models.Adapter.ITest_question ITest_question;
+
+        /// <summary>
+        /// 获取数据库上下文
+        /// </summary>
+        /// <returns></returns>
+        public Models.Adapter.ITest_question GetITest_question()
+        {
+            return ITest_question ?? (ITest_question = new Adapter.ITest_question());
+        }
+        #endregion
+
     }
 }

@@ -70,6 +70,20 @@ namespace OnlineLearning.Areas.Common.Controllers
 
         }
 
+
+        public ActionResult _Header()
+        {
+            //var user = Request.Cookies["login"];
+            //if (user == null)
+            //{
+            //    // TODO:这块 throw new Exception("用户未登录，越权");
+            //}
+            return View();
+        }
+
+        /// <summary>
+        /// test
+        /// </summary>
         public void Login()
         {
             Login(201392301, "lxc123");
@@ -81,5 +95,7 @@ namespace OnlineLearning.Areas.Common.Controllers
             var y = Request.Cookies["login"];
             return Redirect(y.Values["StudentNum"]);
         }
+
+  
     }
 }
