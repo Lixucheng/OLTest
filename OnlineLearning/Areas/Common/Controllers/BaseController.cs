@@ -27,7 +27,7 @@ namespace OnlineLearning.Areas.Common.Controllers
         protected void AddLoginCookie(string name, Models.Account account)
         {
             var cookic = new HttpCookie(name);
-            cookic.Values["StudentNum"] = account.StudentNum.ToString();
+            cookic.Values["StudentNum"] = account.StudentNum.ToString(CultureInfo.InvariantCulture);
             cookic.Values["time"] = DateTime.Now.ToString(CultureInfo.InvariantCulture);
             Response.Cookies.Add(cookic);      
         }
@@ -45,12 +45,12 @@ namespace OnlineLearning.Areas.Common.Controllers
         /// <summary>
         /// 登陆
         /// </summary>
-        /// <param name="email"></param>
+        /// <param name="num"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        protected bool Login(long Num, string password)
+        protected bool Login(long num, string password)
         {
-            var account = Sgt.GetAccount().GetAccountByStudentNum(Num);
+            var account = Sgt.GetAccount().GetAccountByStudentNum(num);
             if (account == null||account.Password!=password)
             {
                 return false;
