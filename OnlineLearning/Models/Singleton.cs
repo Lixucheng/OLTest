@@ -45,11 +45,11 @@ namespace OnlineLearning.Models
 
 
         #region Score
-        //数据库上下文单例
+        //分数上下文单例
         protected Models.Adapter.IScore Score;
 
         /// <summary>
-        /// 获取数据库上下文
+        /// 获取分数上下文
         /// </summary>
         /// <returns></returns>
         public Models.Adapter.IScore GetScore()
@@ -60,11 +60,11 @@ namespace OnlineLearning.Models
 
 
         #region Test
-        //数据库上下文单例
+        //测试上下文单例
         protected Adapter.ITest Test;
 
         /// <summary>
-        /// 获取数据库上下文
+        /// 获取考试上下文
         /// </summary>
         /// <returns></returns>
         public Adapter.ITest GetTest()
@@ -88,11 +88,11 @@ namespace OnlineLearning.Models
         #endregion
 
         #region Answer
-        //数据库上下文单例
+        //答案上下文单例
         protected Models.Answer Answer;
 
         /// <summary>
-        /// 获取数据库上下文
+        /// 获取答案上下文
         /// </summary>
         /// <returns></returns>
         public Models.Answer GetAnswer()
@@ -103,11 +103,11 @@ namespace OnlineLearning.Models
 
 
         #region Question
-        //数据库上下文单例
+        //问题上下文单例
         protected Models.Adapter.IQuestion Question;
 
         /// <summary>
-        /// 获取数据库上下文
+        /// 获取问题上下文
         /// </summary>
         /// <returns></returns>
         public Models.Adapter.IQuestion GetQuestion()
@@ -128,6 +128,20 @@ namespace OnlineLearning.Models
         public Models.Adapter.ITest_question GetITest_question()
         {
             return ITest_question ?? (ITest_question = new Adapter.ITest_question());
+        }
+        #endregion
+
+        #region IPart
+        //数据库上下文单例
+        protected Models.Adapter.IPart IPart;
+
+        /// <summary>
+        /// 获单元上下文
+        /// </summary>
+        /// <returns></returns>
+        public Models.Adapter.IPart GetIPart()
+        {
+            return IPart ?? (IPart = new Adapter.IPart());
         }
         #endregion
 

@@ -33,7 +33,7 @@ namespace OnlineLearning.Models.Adapter
             return true;
         }
         ////删除答案：通过ID删除
-        public bool Remove(long id)
+        public bool RemoveById(long id)
         {
             var x = Db.Answer.Find(id);
             if (x == null)
@@ -45,7 +45,7 @@ namespace OnlineLearning.Models.Adapter
             return true;
         }
         //删除答案：通过学生删除
-        public bool Remove(long id)
+        public bool RemoveByStudentId(long id)
         {
             var x = Db.Answer.FirstOrDefault(e => e.studentId == id);
             if (x == null)
@@ -90,7 +90,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         //寻找答案:通过问题查找
-        public Models.Answer Find(long id)
+        public Models.Answer FindByQuestionId(long id)
         {
             var x = Db.Answer.FirstOrDefault(e => e.questionId == id);
             if (x == null)
