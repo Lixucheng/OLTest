@@ -73,11 +73,11 @@ namespace OnlineLearning.Areas.Common.Controllers
 
         public ActionResult _Header()
         {
-            //var user = Request.Cookies["login"];
-            //if (user == null)
-            //{
-            //    // TODO:这块 throw new Exception("用户未登录，越权");
-            //}
+            var user = Request.Cookies["login"];
+            if (user == null)
+            {
+                 // todo: throw new Exception("用户未登录，越权");
+            }
             return View();
         }
 
