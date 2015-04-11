@@ -10,7 +10,7 @@ namespace OnlineLearning.Areas.Common.Controllers
 {
     public class BaseController : Controller
     {
-        protected OnlineLearningEntities Db;
+        protected LXC_OnlineLearningEntities Db;
         protected Singleton Sgt;
 
         public BaseController()

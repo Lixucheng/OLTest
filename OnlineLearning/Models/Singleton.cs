@@ -9,15 +9,15 @@ namespace OnlineLearning.Models
     {
         #region Context
         //数据库上下文单例
-        protected OnlineLearningEntities TheContext;
+        protected LXC_OnlineLearningEntities TheContext;
 
         /// <summary>
         /// 获取数据库上下文
         /// </summary>
         /// <returns></returns>
-        public OnlineLearningEntities GetDbContext()
+        public LXC_OnlineLearningEntities GetDbContext()
         {
-            return TheContext ?? (TheContext = new OnlineLearningEntities());
+            return TheContext ?? (TheContext = new LXC_OnlineLearningEntities() );
         }
         #endregion
 

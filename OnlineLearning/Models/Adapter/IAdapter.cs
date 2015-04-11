@@ -14,7 +14,7 @@ namespace OnlineLearning.Models.Adapter
             get { return HttpContext.Current.Items["_Singleton"] as Singleton; }
         }
 
-        protected OnlineLearningEntities Db
+        protected LXC_OnlineLearningEntities Db
         {
             get { return Sgt.GetDbContext(); }
         }

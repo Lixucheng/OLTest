@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="OnlineLearningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LXC_OnlineLearningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,8 +12,8 @@
           <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="StudentNum" Type="bigint" Nullable="false" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Class" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="Class" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Sex" Type="nchar" MaxLength="10" />
           <Property Name="Age" Type="int" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="pic" Type="nvarchar" MaxLength="50" />
@@ -27,7 +27,7 @@
           <Property Name="questionId" Type="int" Nullable="false" />
           <Property Name="studentId" Type="int" Nullable="false" />
           <Property Name="TestId" Type="int" Nullable="false" />
-          <Property Name="Answer" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="part">
           <Key>
@@ -46,7 +46,7 @@
           <Property Name="B_op" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="C_op" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="D_op" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="correct_op" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="correct_op" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Image" Type="nvarchar" MaxLength="50" />
           <Property Name="PartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
@@ -64,10 +64,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="PassWord" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Pic" Type="nvarchar(max)" />
-          <Property Name="Sex" Type="nchar" MaxLength="10" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
           <Property Name="Age" Type="int" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -87,7 +87,7 @@
           <Property Name="TestId" Type="int" Nullable="false" />
           <Property Name="QuestionId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="OnlineLearningModelStoreContainer">
+        <EntityContainer Name="LXC_OnlineLearningModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="part" EntityType="Self.part" Schema="dbo" store:Type="Tables" />
@@ -97,10 +97,11 @@
           <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Test_question" EntityType="Self.Test_question" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="OnlineLearningModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="LXC_OnlineLearningModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Id" />
@@ -108,8 +109,8 @@
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="StudentNum" Type="Int64" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Age" Type="Int32" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="pic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -123,7 +124,7 @@
           <Property Name="questionId" Type="Int32" Nullable="false" />
           <Property Name="studentId" Type="Int32" Nullable="false" />
           <Property Name="TestId" Type="Int32" Nullable="false" />
-          <Property Name="Answer1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Answer1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="part">
           <Key>
@@ -142,7 +143,7 @@
           <Property Name="B_op" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="C_op" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="D_op" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="correct_op" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="correct_op" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
@@ -160,12 +161,12 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="PassWord" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="Int32" />
-          <Property Name="Email" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Test">
           <Key>
@@ -183,7 +184,7 @@
           <Property Name="TestId" Type="Int32" Nullable="false" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="OnlineLearningEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="LXC_OnlineLearningEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Account" EntityType="Self.Account" />
           <EntitySet Name="Answer" EntityType="Self.Answer" />
           <EntitySet Name="part" EntityType="Self.part" />
@@ -198,11 +199,10 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OnlineLearningModelStoreContainer" CdmEntityContainer="OnlineLearningEntities">
+        <EntityContainerMapping StorageEntityContainer="LXC_OnlineLearningModelStoreContainer" CdmEntityContainer="LXC_OnlineLearningEntities">
           <EntitySetMapping Name="Account">
-            <EntityTypeMapping TypeName="OnlineLearningModel.Account">
+            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Account">
               <MappingFragment StoreEntitySet="Account">
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="StudentNum" ColumnName="StudentNum" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -211,11 +211,12 @@
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="pic" ColumnName="pic" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Answer">
-            <EntityTypeMapping TypeName="OnlineLearningModel.Answer">
+            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Answer">
               <MappingFragment StoreEntitySet="Answer">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="questionId" ColumnName="questionId" />
@@ -226,7 +227,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="part">
-            <EntityTypeMapping TypeName="OnlineLearningModel.part">
+            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.part">
               <MappingFragment StoreEntitySet="part">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -235,7 +236,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Question">
-            <EntityTypeMapping TypeName="OnlineLearningModel.Question">
+            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Question">
               <MappingFragment StoreEntitySet="Question">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="A_op" ColumnName="A_op" />
@@ -249,7 +250,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Score">
-            <EntityTypeMapping TypeName="OnlineLearningModel.Score">
+            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Score">
               <MappingFragment StoreEntitySet="Score">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
@@ -259,29 +260,29 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeacherAccount">
-            <EntityTypeMapping TypeName="OnlineLearningModel.TeacherAccount">
+            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.TeacherAccount">
               <MappingFragment StoreEntitySet="TeacherAccount">
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="Pic" ColumnName="Pic" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Test">
-            <EntityTypeMapping TypeName="OnlineLearningModel.Test">
+            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Test">
               <MappingFragment StoreEntitySet="Test">
-                <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Test_question">
-            <EntityTypeMapping TypeName="OnlineLearningModel.Test_question">
+            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Test_question">
               <MappingFragment StoreEntitySet="Test_question">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TestId" ColumnName="TestId" />
