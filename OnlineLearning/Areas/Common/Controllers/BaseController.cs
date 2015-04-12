@@ -67,7 +67,7 @@ namespace OnlineLearning.Areas.Common.Controllers
         public ActionResult Logout()
         {
             Session.Remove("login");
-            Response.Cookies.Remove("login");
+            Response.Cookies["login"].Expires = DateTime.Now.AddDays(-1);
             return Redirect("~/students/log/login");
         }
 
@@ -77,19 +77,17 @@ namespace OnlineLearning.Areas.Common.Controllers
         /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            
-
         }
 
 
         public ActionResult _Header()
         {
-            var user = Request.Cookies["login"];
-            if (user == null)
-            {
-                 // todo: throw new Exception("用户未登录，越权");
-            }
+            var user = Request.Cookies["login"];       
             var num= user.Values["StudentNum"];
+            if (num == null)
+            {
+                return Redirect("/student/log/login");
+            }
             return View(Sgt.GetAccount().GetAccountByStudentNum(long.Parse(num)));
         }
 
