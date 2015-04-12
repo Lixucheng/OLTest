@@ -163,6 +163,7 @@
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
     <Compile Include="Areas\Common\Controllers\BaseController.cs" />
     <Compile Include="Areas\Students\Controllers\IndexController.cs" />
+    <Compile Include="Areas\Students\Controllers\LogController.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -256,6 +257,7 @@
       <DependentUpon>ModelNew.edmx</DependentUpon>
       <LastGenOutput>ModelNew.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Students\Views\Log\Login.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -296,6 +298,7 @@
     <Folder Include="Areas\Common\Views\Bace\" />
     <Folder Include="Areas\Common\Views\Shared\" />
     <Folder Include="Areas\Students\Models\" />
+    <Folder Include="Content\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

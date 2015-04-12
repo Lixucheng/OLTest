@@ -48,16 +48,27 @@ namespace OnlineLearning.Areas.Common.Controllers
         /// <param name="num"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        protected bool Login(long num, string password)
+        public int Login(long num, string password)
         {
             var account = Sgt.GetAccount().GetAccountByStudentNum(num);
             if (account == null||account.Password!=password)
             {
-                return false;
+                return 0;
             }
             AddLoginCookie("login",account);
             AddLoginSession("login",account);
-            return true;
+            //return Redirect("~/students/index/index");
+            return 1;
+        }
+
+        /// <summary>
+        /// 注销
+        /// </summary>
+        public ActionResult Logout()
+        {
+            Session.Remove("login");
+            Response.Cookies.Remove("login");
+            return Redirect("~/students/log/login");
         }
 
         /// <summary>
@@ -78,23 +89,30 @@ namespace OnlineLearning.Areas.Common.Controllers
             {
                  // todo: throw new Exception("用户未登录，越权");
             }
-            return View();
+            var num= user.Values["StudentNum"];
+            return View(Sgt.GetAccount().GetAccountByStudentNum(long.Parse(num)));
         }
 
-        /// <summary>
-        /// test
-        /// </summary>
-        public void Login()
-        {
-            Login(201392301, "lxc123");
-        }
 
-        public ActionResult TestLogin()
-        {
-            var x=Session["login"] as Account;
-            var y = Request.Cookies["login"];
-            return Redirect(y.Values["StudentNum"]);
-        }
+
+
+
+        ///// <summary>
+        ///// test
+        ///// </summary>
+        //public void Login()
+        //{
+        //    Login(201392301, "lxc123");
+        //}
+
+    
+
+        //public ActionResult TestLogin()
+        //{
+        //    var x=Session["login"] as Account;
+        //    var y = Request.Cookies["login"];
+        //    return Redirect(y.Values["StudentNum"]);
+        //}
 
   
     }
