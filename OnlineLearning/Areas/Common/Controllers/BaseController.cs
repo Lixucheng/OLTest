@@ -10,7 +10,7 @@ namespace OnlineLearning.Areas.Common.Controllers
 {
     public class BaseController : Controller
     {
-        protected LXC_OnlineLearningEntities Db;
+        protected OnlineLearningEntities1 Db;
         protected Singleton Sgt;
 
         public BaseController()
@@ -24,7 +24,7 @@ namespace OnlineLearning.Areas.Common.Controllers
         /// </summary>
         /// <param name="name"></param>
         /// <param name="account"></param>
-        protected void AddLoginCookie(string name, Models.Account account)
+        protected void AddLoginCookie(string name, Account account)
         {
             var cookic = new HttpCookie(name);
             cookic.Values["StudentNum"] = account.StudentNum.ToString(CultureInfo.InvariantCulture);
@@ -82,12 +82,13 @@ namespace OnlineLearning.Areas.Common.Controllers
 
         public ActionResult _Header()
         {
-            var user = Request.Cookies["login"];       
-            var num= user.Values["StudentNum"];
-            if (num == null)
+            var user = Request.Cookies["login"];
+            if (user == null)
             {
-                return Redirect("/student/log/login");
+                throw new Exception("cookic错误，请重新登录");
             }
+            var num= user.Values["StudentNum"];
+           
             return View(Sgt.GetAccount().GetAccountByStudentNum(long.Parse(num)));
         }
 

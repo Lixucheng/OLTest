@@ -170,7 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs">
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Adapter\IAccount.cs" />
     <Compile Include="Models\Adapter\IAdapter.cs" />
@@ -182,41 +182,41 @@
     <Compile Include="Models\Adapter\ITest.cs" />
     <Compile Include="Models\Adapter\ITest_question.cs" />
     <Compile Include="Models\Answer.cs">
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelNew.Context.cs">
+    <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelNew.Context.tt</DependentUpon>
+      <DependentUpon>Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelNew.cs">
+    <Compile Include="Models\Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelNew.Designer.cs">
+    <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelNew.edmx</DependentUpon>
+      <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\part.cs">
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Score.cs">
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Singleton.cs" />
     <Compile Include="Models\TeacherAccount.cs">
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Test.cs">
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Test_question.cs">
-      <DependentUpon>ModelNew.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -240,24 +240,24 @@
     <Content Include="Areas\Admin\Views\Shared\_Menu.cshtml" />
     <Content Include="Areas\Students\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Students\Views\Shared\_Menu.cshtml" />
-    <EntityDeploy Include="Models\ModelNew.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelNew.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModelNew.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelNew.edmx</DependentUpon>
-      <LastGenOutput>ModelNew.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ModelNew.edmx.diagram">
-      <DependentUpon>ModelNew.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\ModelNew.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelNew.edmx</DependentUpon>
-      <LastGenOutput>ModelNew.cs</LastGenOutput>
-    </Content>
     <Content Include="Areas\Students\Views\Log\Login.cshtml" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -62,7 +62,7 @@
                     </label>
                     <br />
                     <div class="am-cf">
-                        <input type="submit" id="logbutton" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
+                        <input type="button" id="logbutton" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
                         <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
                     </div>
                 </form>
@@ -74,25 +74,27 @@
         
         <script src="~/Scripts/bower_components/jquery/dist/jquery.js"></script>
         <script>
-            $("#logbutton").click(function () {
-                var a = $("#StudentNum").val();
-                var b = $("#password").val();
-                $.ajax({
-                    url:  "/Common/Base/Login",
-                    data:  {
-                        num:  a,
-                        password: b
-                    },
-                    success: function (res) {
-                        if (res == 1) {
-                            window.location.href="/students/index/index";
-                        } else {
-                            alert("用户名或密码错误");
+            $(function() {
+                $("#logbutton").click(function () {
+                    var a = $("#StudentNum").val();
+                    var b = $("#password").val();
+                    $.ajax({
+                        url: "/Common/Base/Login",
+                        data: {
+                            num: a,
+                            password: b
+                        },
+                        success: function (res) {
+                            if (res == 1) {
+                                window.location.href = "/students/index/index";
+                            } else {
+                                alert("用户名或密码错误");
+                            }
                         }
-                    }
+                    });
                 });
-
             });
+            
         </script>
     </body>
 

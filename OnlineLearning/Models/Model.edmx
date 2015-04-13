@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LXC_OnlineLearningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="OnlineLearningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Id" />
@@ -77,7 +77,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Test_question">
           <Key>
@@ -87,7 +87,7 @@
           <Property Name="TestId" Type="int" Nullable="false" />
           <Property Name="QuestionId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="LXC_OnlineLearningModelStoreContainer">
+        <EntityContainer Name="OnlineLearningModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="part" EntityType="Self.part" Schema="dbo" store:Type="Tables" />
@@ -101,7 +101,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="LXC_OnlineLearningModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="OnlineLearningModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Id" />
@@ -174,7 +174,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Test_question">
           <Key>
@@ -184,7 +184,7 @@
           <Property Name="TestId" Type="Int32" Nullable="false" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="LXC_OnlineLearningEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OnlineLearningEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Account" EntityType="Self.Account" />
           <EntitySet Name="Answer" EntityType="Self.Answer" />
           <EntitySet Name="part" EntityType="Self.part" />
@@ -199,9 +199,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LXC_OnlineLearningModelStoreContainer" CdmEntityContainer="LXC_OnlineLearningEntities">
+        <EntityContainerMapping StorageEntityContainer="OnlineLearningModelStoreContainer" CdmEntityContainer="OnlineLearningEntities1">
           <EntitySetMapping Name="Account">
-            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Account">
+            <EntityTypeMapping TypeName="OnlineLearningModel.Account">
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="StudentNum" ColumnName="StudentNum" />
@@ -216,7 +216,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Answer">
-            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Answer">
+            <EntityTypeMapping TypeName="OnlineLearningModel.Answer">
               <MappingFragment StoreEntitySet="Answer">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="questionId" ColumnName="questionId" />
@@ -227,7 +227,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="part">
-            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.part">
+            <EntityTypeMapping TypeName="OnlineLearningModel.part">
               <MappingFragment StoreEntitySet="part">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -236,7 +236,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Question">
-            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Question">
+            <EntityTypeMapping TypeName="OnlineLearningModel.Question">
               <MappingFragment StoreEntitySet="Question">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="A_op" ColumnName="A_op" />
@@ -250,7 +250,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Score">
-            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Score">
+            <EntityTypeMapping TypeName="OnlineLearningModel.Score">
               <MappingFragment StoreEntitySet="Score">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
@@ -260,7 +260,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeacherAccount">
-            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.TeacherAccount">
+            <EntityTypeMapping TypeName="OnlineLearningModel.TeacherAccount">
               <MappingFragment StoreEntitySet="TeacherAccount">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -273,7 +273,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Test">
-            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Test">
+            <EntityTypeMapping TypeName="OnlineLearningModel.Test">
               <MappingFragment StoreEntitySet="Test">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -282,7 +282,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Test_question">
-            <EntityTypeMapping TypeName="LXC_OnlineLearningModel.Test_question">
+            <EntityTypeMapping TypeName="OnlineLearningModel.Test_question">
               <MappingFragment StoreEntitySet="Test_question">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TestId" ColumnName="TestId" />
