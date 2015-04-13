@@ -74,10 +74,13 @@
         
         <script src="~/Scripts/bower_components/jquery/dist/jquery.js"></script>
         <script>
-            $(function() {
+            $(function () {
                 $("#logbutton").click(function () {
                     var a = $("#StudentNum").val();
                     var b = $("#password").val();
+                    if (a == "" || b == "")
+                        alert("请正确输入账户密码！");
+                    else
                     $.ajax({
                         url: "/Common/Base/Login",
                         data: {
