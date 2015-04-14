@@ -165,6 +165,7 @@
     <Compile Include="Areas\Students\Controllers\IndexController.cs" />
     <Compile Include="Areas\Students\Controllers\LogController.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
+    <Compile Include="Attributes\PublicAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -299,6 +300,7 @@
     <Folder Include="Areas\Common\Views\Shared\" />
     <Folder Include="Areas\Students\Models\" />
     <Folder Include="Content\Login\" />
+    <Folder Include="Views\PublicAttribute\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

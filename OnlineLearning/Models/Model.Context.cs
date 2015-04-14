@@ -13,10 +13,10 @@ namespace OnlineLearning.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OnlineLearningEntities1 : DbContext
+    public partial class OnlineLearningEntities : DbContext
     {
-        public OnlineLearningEntities1()
-            : base("name=OnlineLearningEntities1")
+        public OnlineLearningEntities()
+            : base("name=OnlineLearningEntities")
         {
         }
     

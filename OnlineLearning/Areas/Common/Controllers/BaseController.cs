@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineLearning.Attributes;
 using OnlineLearning.Models;
 using System.Globalization;
 
@@ -10,7 +11,7 @@ namespace OnlineLearning.Areas.Common.Controllers
 {
     public class BaseController : Controller
     {
-        protected OnlineLearningEntities1 Db;
+        protected OnlineLearningEntities Db;
         protected Singleton Sgt;
 
         public BaseController()
@@ -42,12 +43,14 @@ namespace OnlineLearning.Areas.Common.Controllers
             Session.Add(name,account);
         }
 
+       
         /// <summary>
         /// 登陆
         /// </summary>
         /// <param name="num"></param>
         /// <param name="password"></param>
         /// <returns></returns>
+        [Public]
         public int Login(long num, string password)
         {
             var account = Sgt.GetAccount().GetAccountByStudentNum(num);
@@ -77,9 +80,31 @@ namespace OnlineLearning.Areas.Common.Controllers
         /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+
+            var a = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+            //如果 没有 Public 特性， 则进行登录权限检查
+            var attribute = filterContext.ActionDescriptor.GetCustomAttributes(typeof(PublicAttribute), false);
+            if (filterContext.ActionDescriptor.GetCustomAttributes(typeof(PublicAttribute), false).Length == 0)
+            {
+                var y = Request.Cookies["login"];
+                if (y == null)
+                {
+                    filterContext.Result = new RedirectResult("/Students/Log/Login");
+                    return;
+                }
+                var num = y.Values["StudentNum"];
+                if (num == null)
+                {
+                    // redirect to login
+                    filterContext.Result = new RedirectResult("/Students/Log/Login");
+                    return;
+                }
+            }
+
+            base.OnActionExecuting(filterContext);
         }
 
-
+        [Public]
         public ActionResult _Header()
         {
             var user = Request.Cookies["login"];
@@ -88,10 +113,8 @@ namespace OnlineLearning.Areas.Common.Controllers
                 throw new Exception("cookic错误，请重新登录");
             }
             var num= user.Values["StudentNum"];
-           
             return View(Sgt.GetAccount().GetAccountByStudentNum(long.Parse(num)));
         }
-
 
 
 
@@ -104,11 +127,11 @@ namespace OnlineLearning.Areas.Common.Controllers
         //    Login(201392301, "lxc123");
         //}
 
-    
+
 
         //public ActionResult TestLogin()
         //{
-        //    var x=Session["login"] as Account;
+        //    var x = Session["login"] as Account;
         //    var y = Request.Cookies["login"];
         //    return Redirect(y.Values["StudentNum"]);
         //}

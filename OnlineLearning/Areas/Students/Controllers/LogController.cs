@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineLearning.Attributes;
 
 namespace OnlineLearning.Areas.Students.Controllers
 {
@@ -10,6 +11,7 @@ namespace OnlineLearning.Areas.Students.Controllers
     {
         // GET: Students/Log
        
+        [Public]
         public ActionResult Login()
         {
             return View();
