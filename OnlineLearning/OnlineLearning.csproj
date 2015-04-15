@@ -241,7 +241,7 @@
     <Content Include="Areas\Admin\Views\Shared\_Menu.cshtml" />
     <Content Include="Areas\Students\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Students\Views\Shared\_Menu.cshtml" />
-    <Content Include="Areas\Students\Views\Log\Login.cshtml" />
+    <Content Include="Areas\Students\Views\Log\SLogin.cshtml" />
     <EntityDeploy Include="Models\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>

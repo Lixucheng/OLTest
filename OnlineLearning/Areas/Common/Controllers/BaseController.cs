@@ -71,7 +71,7 @@ namespace OnlineLearning.Areas.Common.Controllers
         {
             Session.Remove("login");
             Response.Cookies["login"].Expires = DateTime.Now.AddDays(-1);
-            return Redirect("~/students/log/login");
+            return Redirect("~/students/log/slogin");
         }
 
         /// <summary>
@@ -89,14 +89,14 @@ namespace OnlineLearning.Areas.Common.Controllers
                 var y = Request.Cookies["login"];
                 if (y == null)
                 {
-                    filterContext.Result = new RedirectResult("/Students/Log/Login");
+                    filterContext.Result = new RedirectResult("/Students/Log/SLogin");
                     return;
                 }
                 var num = y.Values["StudentNum"];
                 if (num == null)
                 {
                     // redirect to login
-                    filterContext.Result = new RedirectResult("/Students/Log/Login");
+                    filterContext.Result = new RedirectResult("/Students/Log/SLogin");
                     return;
                 }
             }
