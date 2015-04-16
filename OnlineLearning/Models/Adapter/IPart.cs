@@ -66,5 +66,11 @@ namespace OnlineLearning.Models.Adapter
         {
             return Db.part.ToList();
         }
+
+        public bool Exist(int id)
+        {
+            var x = Db.part.Find(id);
+            return x != null;
+        }
     }
 }
