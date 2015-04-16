@@ -20,6 +20,21 @@ namespace OnlineLearning.Models.Adapter
         }
 
         /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Test Find(int id)
+        {
+            var x = Db.Test.Find(id);
+            if (x == null)
+            {
+                throw new Exception("没有这个考试");
+            }
+            return x;
+        }
+
+        /// <summary>
         /// 添加
         /// </summary>
         /// <param name="x"></param>

@@ -150,7 +150,7 @@ namespace OnlineLearning.Models.Adapter
          }
         #endregion
 
-         #region 返回所有testid相同的成绩项 +List<Models.Score> GetAllTestidList(int testid=-1)
+        #region 返回所有testid相同的成绩项 +List<Models.Score> GetAllTestidList(int testid=-1)
          /// <summary>
         /// 返回所有testid相同的成绩项
         /// </summary>
