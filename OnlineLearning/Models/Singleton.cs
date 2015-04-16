@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using OnlineLearning.Models.Adapter;
 
 namespace OnlineLearning.Models
 {
@@ -89,15 +90,15 @@ namespace OnlineLearning.Models
 
         #region Answer
         //答案上下文单例
-        protected Models.Answer Answer;
+        protected IAnswer Answer;
 
         /// <summary>
         /// 获取答案上下文
         /// </summary>
         /// <returns></returns>
-        public Models.Answer GetAnswer()
+        public IAnswer GetAnswer()
         {
-            return Answer ?? (Answer = new Answer());
+            return Answer ?? (Answer = new IAnswer());
         }
         #endregion
 

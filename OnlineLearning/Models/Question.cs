@@ -21,7 +21,6 @@ namespace OnlineLearning.Models
         public string D_op { get; set; }
         public string correct_op { get; set; }
         public string Image { get; set; }
-        public int PartId { get; set; }
         public int score { get; set; }
         public string Question1 { get; set; }
     }

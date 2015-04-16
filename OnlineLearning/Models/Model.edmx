@@ -48,7 +48,6 @@
           <Property Name="D_op" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="correct_op" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Image" Type="nvarchar" MaxLength="50" />
-          <Property Name="PartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="score" Type="int" Nullable="false" />
           <Property Name="Question" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -146,7 +145,6 @@
           <Property Name="D_op" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="correct_op" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="score" Type="Int32" Nullable="false" />
           <Property Name="Question1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -250,7 +248,6 @@
                 <ScalarProperty Name="D_op" ColumnName="D_op" />
                 <ScalarProperty Name="correct_op" ColumnName="correct_op" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="PartId" ColumnName="PartId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

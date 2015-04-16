@@ -33,7 +33,7 @@ namespace OnlineLearning.Models.Adapter
             return true;
         }
         ////删除答案：通过ID删除
-        public bool RemoveById(long id)
+        public bool RemoveById(int id)
         {
             var x = Db.Answer.Find(id);
             if (x == null)
@@ -45,7 +45,7 @@ namespace OnlineLearning.Models.Adapter
             return true;
         }
         //删除答案：通过学生删除
-        public bool RemoveByStudentId(long id)
+        public bool RemoveByStudentId(int id)
         {
             var x = Db.Answer.FirstOrDefault(e => e.studentId == id);
             if (x == null)
@@ -79,7 +79,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         //寻找答案:通过ID查找
-        public Models.Answer Find(long id)
+        public Models.Answer Find(int id)
         {
             var x = Db.Answer.Find(id);
             if (x == null)
@@ -90,9 +90,20 @@ namespace OnlineLearning.Models.Adapter
         }
 
         //寻找答案:通过问题查找
-        public Models.Answer FindByQuestionId(long id)
+        public Models.Answer FindByQuestionId(int id)
         {
             var x = Db.Answer.FirstOrDefault(e => e.questionId == id);
+            if (x == null)
+            {
+                throw new Exception("答案不存在");
+            }
+            return x;
+        }
+
+        //寻找答案:通过各种id查找
+        public Models.Answer FindByAllid(int testid,int questionId,int studentid)
+        {
+            var x = Db.Answer.FirstOrDefault(e => e.studentId== studentid&&e.TestId==testid&&e.questionId==questionId);
             if (x == null)
             {
                 throw new Exception("答案不存在");

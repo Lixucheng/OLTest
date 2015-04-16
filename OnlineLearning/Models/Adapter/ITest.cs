@@ -101,6 +101,26 @@ namespace OnlineLearning.Models.Adapter
         {
             return Db.Test.ToList();
         }
+
+        /// <summary>
+        /// 提交之后计算分数
+        /// </summary>
+        /// <param name="testid"></param>
+        /// <param name="studentid"></param>
+        public void CalculateScore(int testid, int studentid)
+        {
+            var questions = GetQuestionsByTestId(testid);
+            int sco=0;
+            questions.ForEach(e =>
+            {
+                var answer = Sgt.GetAnswer().FindByAllid(testid, e.Id, studentid);
+                if (answer.Answer1==e.correct_op)
+                {
+                    sco += e.score;
+                }
+            });
+            Sgt.GetScore().Add(studentid, testid, sco);
+        }
     }
 
 }

@@ -10,7 +10,7 @@ namespace OnlineLearning.Models.Adapter
     public class IQuestion:Models.Adapter.IAdapter
     {
 
-        #region 创建问题  + Add(string content,string aop,string bop,string cop,string dop,string correctop,string image,int partid,int score)
+        #region 创建问题  + Add(string content,string aop,string bop,string cop,string dop,string correctop,string image,int score)
 
         /// <summary>
         /// 创建问题
@@ -21,10 +21,9 @@ namespace OnlineLearning.Models.Adapter
         /// <param name="cop">answer C</param>
         /// <param name="dop">answer D</param>
         /// <param name="image"></param>
-        /// <param name="partid">所属单元id</param>
         /// <param name="score"></param>
         /// <returns></returns>
-        public int Add(string content,string aop,string bop,string cop,string dop,string correctop,string image,int partid,int score)
+        public int Add(string content,string aop,string bop,string cop,string dop,string correctop,string image,int score)
         {
             if (String.IsNullOrEmpty(content))
             {
@@ -67,10 +66,7 @@ namespace OnlineLearning.Models.Adapter
                 throw new ArgumentNullException("正确答案为空！");
             }
 
-            if(!Sgt.GetIPart().Exist(partid))
-            {
-                throw new Exception("不存在该问题所属单元！");
-            }
+ 
             if (score <= 0 || score > 100)
             {
                 throw new Exception("请输出正确的分数！");
@@ -85,7 +81,7 @@ namespace OnlineLearning.Models.Adapter
                 D_op=dop,
                 correct_op=correctop,
                 Image=image,
-                PartId=partid,
+
                 score = score
             };
 
@@ -116,7 +112,7 @@ namespace OnlineLearning.Models.Adapter
         #endregion
 
 
-        #region 修改问题 +bool Update(int keyid,string aop,string bop,string cop,string dop,string image,int partid,int score)
+        #region 修改问题 +bool Update(int keyid,string aop,string bop,string cop,string dop,string image,int score)
 
         /// <summary>
         /// 修改问题
@@ -129,10 +125,9 @@ namespace OnlineLearning.Models.Adapter
         /// <param name="dop"></param>
         /// <param name="correctop"></param>
         /// <param name="image"></param>
-        /// <param name="partid"></param>
         /// <param name="score"></param>
         /// <returns></returns>
-        public bool Update(int keyid, string content, string aop, string bop, string cop, string dop, string correctop, string image, int partid, int score)
+        public bool Update(int keyid, string content, string aop, string bop, string cop, string dop, string correctop, string image, int score)
         {
             var question=Db.Question.Find(keyid);
             if (question == null)
@@ -181,11 +176,7 @@ namespace OnlineLearning.Models.Adapter
                 throw new ArgumentNullException("正确答案为空！");
             }
 
-            if (!Sgt.GetIPart().Exist(partid))
-            {
-                throw new Exception("不存在该问题所属单元！");
-            }
-
+        
             if (score <= 0 || score > 100)
             {
                 throw new Exception("请输出正确的分数！");
@@ -197,7 +188,6 @@ namespace OnlineLearning.Models.Adapter
             question.C_op = cop;
             question.D_op = dop;
             question.correct_op = correctop;
-            question.PartId=partid;
             question.Image = image;
             question.score = score;
 
