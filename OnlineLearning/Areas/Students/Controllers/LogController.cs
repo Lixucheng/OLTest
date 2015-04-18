@@ -33,5 +33,11 @@ namespace OnlineLearning.Areas.Students.Controllers
             Sgt.GetAccount().EditPassWord(GetStudentId(), password);
             return Redirect("~/Students/Index/Index");
         }
+
+        public int TestPassword(string oldpassword)
+        {
+            var x = Sgt.GetAccount().Find(GetStudentId());
+            return x.Password != oldpassword ? 0 : 1;
+        }
     }
 }

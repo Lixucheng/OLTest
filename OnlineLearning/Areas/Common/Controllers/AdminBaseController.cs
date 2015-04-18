@@ -94,10 +94,16 @@ namespace OnlineLearning.Areas.Common.Controllers
                 var num = y.Values["id"];
                 if (num == null)
                 {
-                    // redirect to login
                     filterContext.Result = new RedirectResult("~/admin/manage/tlogin");
                     return;
                 }
+                var x = Session["login"] as Account;
+                if (x==null)
+                {
+                    filterContext.Result = new RedirectResult("~/admin/manage/tlogin");
+                    return;
+                }
+    
             }
 
             base.OnActionExecuting(filterContext);

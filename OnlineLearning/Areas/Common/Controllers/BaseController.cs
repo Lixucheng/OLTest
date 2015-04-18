@@ -99,6 +99,13 @@ namespace OnlineLearning.Areas.Common.Controllers
                     filterContext.Result = new RedirectResult("/Students/Log/SLogin");
                     return;
                 }
+                var x = Session["login"] as Account;
+                if (x== null)
+                {
+                    // redirect to login
+                    filterContext.Result = new RedirectResult("/Students/Log/SLogin");
+                    return;
+                }
             }
 
             base.OnActionExecuting(filterContext);
