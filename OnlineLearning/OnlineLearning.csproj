@@ -160,7 +160,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Areas\Common\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Common\Controllers\BaseController.cs" />
     <Compile Include="Areas\Students\Controllers\IndexController.cs" />
     <Compile Include="Areas\Students\Controllers\LogController.cs" />
@@ -263,6 +265,8 @@
     <Content Include="Areas\Students\Views\Index\Test.cshtml" />
     <Content Include="Areas\Students\Views\Index\GetScore.cshtml" />
     <Content Include="Areas\Students\Views\Log\UpdatePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\TLogin.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -294,12 +298,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Admin\_LayoutT.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Common\Models\" />
+    <Folder Include="Areas\Common\Views\AdminBase\" />
     <Folder Include="Areas\Common\Views\Bace\" />
     <Folder Include="Areas\Common\Views\Shared\" />
     <Folder Include="Areas\Students\Models\" />

@@ -76,15 +76,15 @@ namespace OnlineLearning.Models
 
         #region teacherAccount
         //数据库上下文单例
-        protected Models.TeacherAccount TeacherAccount;
+        protected Models.Adapter.ITeacherAccount TeacherAccount;
 
         /// <summary>
         /// 获取数据库上下文
         /// </summary>
         /// <returns></returns>
-        public Models.TeacherAccount GetTeacherAccount()
+        public ITeacherAccount GetTeacherAccount()
         {
-            return TeacherAccount ?? (TeacherAccount = new TeacherAccount());
+            return TeacherAccount ?? (TeacherAccount = new ITeacherAccount());
         }
         #endregion
 

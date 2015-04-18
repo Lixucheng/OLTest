@@ -168,6 +168,7 @@ namespace OnlineLearning.Models.Adapter
             New.Password = pass;
             Db.Entry(New).State=EntityState.Modified;
             Db.SaveChanges();
+            return true;
         }
 
         /// <summary>
