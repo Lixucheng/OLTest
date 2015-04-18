@@ -61,7 +61,7 @@ namespace OnlineLearning.Areas.Common.Controllers
             AddLoginCookie("login",account);
             AddLoginSession("login",account);
             //return Redirect("~/students/index/index");
-            return 1;
+            return account.Id;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace OnlineLearning.Areas.Common.Controllers
         /// </summary>
         public ActionResult Logout()
         {
-            Session.Remove("login");
+            Session["login"]=null;
             Response.Cookies["login"].Expires = DateTime.Now.AddDays(-1);
             return Redirect("~/students/log/slogin");
         }
@@ -116,7 +116,11 @@ namespace OnlineLearning.Areas.Common.Controllers
             return View(Sgt.GetAccount().GetAccountByStudentNum(long.Parse(num)));
         }
 
-
+        public int GetStudentId()
+        {
+            var x = Session["login"] as Account;
+            return x.Id;
+        }
 
 
         ///// <summary>

@@ -18,5 +18,6 @@ namespace OnlineLearning.Models
         public int StudentId { get; set; }
         public int TestId { get; set; }
         public double Score1 { get; set; }
+        public string TestName { get; set; }
     }
 }

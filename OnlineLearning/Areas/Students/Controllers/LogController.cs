@@ -18,5 +18,20 @@ namespace OnlineLearning.Areas.Students.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult UpdatePassword()
+        {
+            int id = GetStudentId();
+            var user=Sgt.GetAccount().Find(id);
+            ViewBag.Old = user.Password;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePasswork(string password)
+        {
+            Sgt.GetAccount().EditPassWord(GetStudentId(), password);
+            return Redirect("~/Students/Index/Index");
+        }
     }
 }

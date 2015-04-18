@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -157,12 +158,24 @@ namespace OnlineLearning.Models.Adapter
             });
         }
 
+        public bool EditPassWord(int id, string pass)
+        {
+            var New = Db.Account.Find(id);
+            if (New == null)
+                throw new Exception("没有找到对应的Account ，无法修改!");
+            if (string.IsNullOrEmpty(pass))
+                throw new Exception("密码不能为空!");
+            New.Password = pass;
+            Db.Entry(New).State=EntityState.Modified;
+            Db.SaveChanges();
+        }
+
         /// <summary>
         /// 查看对应ID的Account是否存在
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public Models.Account Find(string Id)
+        public Models.Account Find(int Id)
         {
             return Db.Account.Find(Id);
         }

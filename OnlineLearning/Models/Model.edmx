@@ -59,6 +59,7 @@
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="TestId" Type="int" Nullable="false" />
           <Property Name="Score" Type="float" Nullable="false" />
+          <Property Name="TestName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TeacherAccount">
           <Key>
@@ -156,6 +157,7 @@
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <Property Name="TestId" Type="Int32" Nullable="false" />
           <Property Name="Score1" Type="Double" Nullable="false" />
+          <Property Name="TestName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TeacherAccount">
           <Key>
@@ -254,6 +256,7 @@
           <EntitySetMapping Name="Score">
             <EntityTypeMapping TypeName="lxc_OnlineLearningModel.Score">
               <MappingFragment StoreEntitySet="Score">
+                <ScalarProperty Name="TestName" ColumnName="TestName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="TestId" ColumnName="TestId" />

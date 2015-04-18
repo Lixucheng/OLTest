@@ -260,6 +260,9 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Areas\Students\Views\Log\Regist.cshtml" />
+    <Content Include="Areas\Students\Views\Index\Test.cshtml" />
+    <Content Include="Areas\Students\Views\Index\GetScore.cshtml" />
+    <Content Include="Areas\Students\Views\Log\UpdatePassword.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

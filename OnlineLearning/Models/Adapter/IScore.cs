@@ -19,7 +19,7 @@ namespace OnlineLearning.Models.Adapter
         /// <param name="testid">测试id</param>
         /// <param name="scroe">学生成绩</param>
         /// <returns></returns>
-        public int Add(int studentid=-1,int testid=-1,double score=-1)
+        public int Add(int studentid=-1,int testid=-1,double score=-1 ,string testname="")
         {   
             //学生Id不能为空
             if(studentid==-1)
@@ -58,6 +58,7 @@ namespace OnlineLearning.Models.Adapter
                 StudentId = studentid,
                 TestId = testid,
                 Score1 = score,
+                TestName = testname
             };
             Db.Score.Add(iscore);
             Db.SaveChanges();
@@ -168,13 +169,13 @@ namespace OnlineLearning.Models.Adapter
          }
          #endregion
 
-        #region 返回studentid对应学生的所有成绩项 +List<Models.Score> GetAllStudentidList(int studentid=-1)
+        #region 返回studentid对应学生的所有成绩项 +List<Models.Score> GetAScoreByStudentid(int studentid=-1)
         /// <summary>
         /// 返回studentid对应学生的所有成绩项
         /// </summary>
         /// <param name="studentid">学生id</param>
         /// <returns></returns>
-        public List<Models.Score> GetAllStudentidList(int studentid=-1) 
+        public List<Models.Score> GetAScoreByStudentid(int studentid=-1) 
         {
             //student不能为空
             if (studentid == -1)
