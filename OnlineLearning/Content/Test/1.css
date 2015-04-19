@@ -1,0 +1,70 @@
+
+.table{
+    position: relative;
+    padding-left: 20px;
+    width: auto;
+    border-bottom: solid;
+    border-spacing: 2px;
+
+    font-size: xx-small;
+
+}
+#score{
+    width: auto;
+}
+
+
+
+.am-form{
+    position:relative;
+    left:30%;
+}
+#uploader-demo{
+    position:relative;
+    left:30%;
+}
+
+.time-item{
+    position:fixed;
+    top: 12%;
+    right: 0%;
+}
+h1 {
+    font-family:"微软雅黑";
+    font-size:20px;
+    margin:20px 0;
+    border-bottom:solid 1px #ccc;
+    padding-bottom:20px;
+    letter-spacing:2px;
+}
+.time-item strong {
+    background:darkgray;
+    color:#fff;
+    line-height:49px;
+    font-size:18px;
+    font-family:Arial;
+    padding:0 10px;
+    margin-right:10px;
+    border-radius:5px;
+    box-shadow:1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.item-title .unit {
+    background:none;
+    line-height:49px;
+    font-size:12px;
+    padding:0 10px;
+    float:left;
+}
+#submit{
+    font-family:"微软雅黑";
+    font-size: 7px;
+    float:right;
+
+}
+#check{
+    font-family:"微软雅黑";
+    font-size: 7px;
+    float:right;
+
+}

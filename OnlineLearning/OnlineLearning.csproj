@@ -161,6 +161,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
     <Compile Include="Areas\Common\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Common\Controllers\BaseController.cs" />
@@ -228,6 +229,7 @@
     <Content Include="Content\adminLayout.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Test\1.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -267,6 +269,8 @@
     <Content Include="Areas\Students\Views\Log\UpdatePassword.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\TLogin.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\Test.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Add.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -309,6 +313,7 @@
     <Folder Include="Areas\Common\Views\Shared\" />
     <Folder Include="Areas\Students\Models\" />
     <Folder Include="Content\Login\" />
+    <Folder Include="Scripts\Other\" />
     <Folder Include="Views\PublicAttribute\" />
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,96 @@
     ViewBag.Title = "Test";
     Layout = "~/Areas/Students/Views/Shared/_Layout.cshtml";
 }
+@section head{
+<link href="~/Content/Test/1.css" rel="stylesheet" />
+}
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">其中考试</strong> / <small>Test</small></div>
+</div>
 
-<h2>Test</h2>
+<div class="time-item">
 
+    <strong id="hour_show">0:</strong>
+    <strong id="minute_show">00:</strong>
+    <strong id="second_show">00:</strong>
+</div>
+
+<div id=" " class="table">
+
+    <form>
+        <p>1.Which of the following is your favorite movie?</p>
+        <input type="radio" name="movie" value="the grand budapast" />A.The Grand Budapast
+        <br />
+        <input type="radio" name="movie" value="birdman" />B.Birdman
+        <br />
+        <input type="radio" name="movie" value="whiplash" />C.Whiplash
+        <br />
+        <input type="radio" name="movie" value="imitation game" />D.The imitation game
+    </form>
+
+</div>
+<div id=" " class="table">
+    <form>
+
+        <p>
+            2.In the TCP establishing phase,how many messages do client and sever exchange
+            before establishment confirmed?
+        </p>
+        <input type="radio" name="number" value="1" />A.1
+        <br />
+        <input type="radio" name="number" value="2" />B.2
+        <br />
+        <input type="radio" name="number" value="3" />C.3
+        <br />
+        <input type="radio" name="number" value="4" />D.4
+    </form>
+</div>
+<div id=" " class="table">
+    <form>
+        <p>3.在你面前有一个瀑布，你可以选择一个速度区间来代表瀑布的流速：</p>
+        <input type="radio" name="v" value="1" />A.0-2
+        <br />
+        <input type="radio" name="v" value="2" />B.3-5
+        <br />
+        <input type="radio" name="v" value="3" />C.6-8
+        <br />
+        <input type="radio" name="v" value="4" />D.9-10
+    </form>
+</div>
+<div id="submit">  <input type="button" value="提交试卷" onclick="sub()"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        function sub() {
+            alert("确定提交？")
+        }
+        var intDiff = parseInt(20);//倒计时总秒数量
+        function timer(intDiff) {
+            window.setInterval(function () {
+                var day = 0,
+                        hour = 0,
+                        minute = 0,
+                        second = 0;//时间默认值
+                if (intDiff > 0) {
+                    day = Math.floor(intDiff / (60 * 60 * 24));
+                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+                if (hour <= 9) hour = '0' + hour;
+                if (minute <= 9) minute = '0' + minute;
+                if (second <= 9) second = '0' + second;
+
+                $('#hour_show').html('<s id="h"></s>' + hour + '');
+                $('#minute_show').html('<s></s>' + minute + '');
+                $('#second_show').html('<s></s>' + second);
+                intDiff--;
+                if (intDiff == -1) alert("时间到，考试结束");
+
+            }, 1000);
+        }
+        $(function () {
+            timer(intDiff);
+        });
+</script>
+}

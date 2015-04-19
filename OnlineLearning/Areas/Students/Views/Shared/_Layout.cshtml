@@ -2,6 +2,9 @@
     Layout = "~/Views/Shared/Admin/_Layout.cshtml";
 }
 
+@section head{
+    @RenderSection("head", false)
+}
 @section menu{
     @Html.Partial("/Areas/students/Views/Shared/_Menu.cshtml")
 }

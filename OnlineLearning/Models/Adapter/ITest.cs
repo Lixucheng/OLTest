@@ -50,7 +50,7 @@ namespace OnlineLearning.Models.Adapter
             {
                 throw new Exception("时间不能为0");
             }      
-            var t=new Test {Name = x};
+            var t=new Test {Name = x,Time = time};
             Db.Test.Add(t);
             Db.SaveChanges();
             return true;
@@ -92,6 +92,7 @@ namespace OnlineLearning.Models.Adapter
                 throw new Exception("时间不能为0");
             }      
             x.Name = name;
+            x.Time = time;
             Db.SaveChanges();
             return true;
         }

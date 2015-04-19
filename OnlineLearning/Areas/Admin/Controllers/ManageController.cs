@@ -10,17 +10,44 @@ namespace OnlineLearning.Areas.Admin.Controllers
 {
     public class ManageController : AdminBaseController
     {
-        // GET: Admin/Manage
+        // GET: Admin/Manage/登陆
         [Public]
         public ActionResult TLogin()
         {
             return View();
         }
 
-        [Public]
+
         public ActionResult Index()
         {
             return View();
         }
+
+
+        public ActionResult Test()
+        {
+            var x = Sgt.GetTest().GetTests();
+            ViewBag.list = x;
+            ViewBag.count = x.Count;
+            return View();
+        }
+
+        public void TestDel(int testid)
+        {
+            Sgt.GetTest().Del(testid);
+        }
+
+        public void TestUpdate(int id, string name, TimeSpan time)
+        {
+            Sgt.GetTest().Update(id, name, time);
+        }
+
+        public ActionResult TestAdd(string name, TimeSpan time)
+        {
+            Sgt.GetTest().Add(name, time);
+            return Redirect("test");
+        }
+
+
     }
 }
