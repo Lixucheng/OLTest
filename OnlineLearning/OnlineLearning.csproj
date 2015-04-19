@@ -165,6 +165,7 @@
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
     <Compile Include="Areas\Common\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Common\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Common\Controllers\UploadController.cs" />
     <Compile Include="Areas\Students\Controllers\IndexController.cs" />
     <Compile Include="Areas\Students\Controllers\LogController.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
@@ -2049,6 +2050,7 @@
     <Folder Include="Areas\Common\Views\AdminBase\" />
     <Folder Include="Areas\Common\Views\Bace\" />
     <Folder Include="Areas\Common\Views\Shared\" />
+    <Folder Include="Areas\Common\Views\Upload\" />
     <Folder Include="Areas\Students\Models\" />
     <Folder Include="Content\Login\" />
     <Folder Include="Scripts\Other\" />

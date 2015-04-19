@@ -39,10 +39,14 @@
         </div>
 
     </div>
-    <form class="am-form" style="display:inline-block;height:30px">
+    <form class="am-form am-form-inline" style="display:inline-block;height:30px">
         <div class="am-form-group " style="margin-bottom: 0">
             <input type="number" id="score" placeholder="请输入分值" required>
         </div>
+        <div class="am-form-group " style="margin-bottom: 0">
+            <input type="text" id="answer" placeholder="请输入答案" required>
+        </div>
+
     </form>
 
 </div>
@@ -50,7 +54,9 @@
 <div class="am-g">
     <div class=" am-u-sm-centered">
          
-            <textarea rows="5" placeholder="请输入题目" id="editor" autofocus></textarea>
+        <textarea rows="5" placeholder="请输入内容" id="editor" autofocus></textarea>
+        <br/>
+        <button type="button" class="am-btn am-btn-primary am-radius" style="position: absolute;right: 5%;bottom: 0">提交</button>
 
         <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
     </div>
@@ -70,21 +76,39 @@
 
     <script>
         $(function () {
-            var text = $("#editor").val();
-            $("#b0").click(function() {
-                alert(text);
+            var t = $("#editor");
+            var t0 = [""];
+            var t1 = [""];
+            var t2 = [""];
+            var t3 = [""];
+            var t4 = [""];
+            var score = 0;
+            var trueop = "";
+            var nowT = t0;
+            $("#b0").click(function () {
+                nowT[0]= t.val();
+                nowT = t0;
+                editor.setValue(t0);
             });
             $("#b1").click(function () {
-       
+                nowT[0] = t.val();
+                nowT = t1;
+                editor.setValue(t1);
             });
             $("#b2").click(function () {
-      
+                nowT[0] = t.val();
+                nowT = t2;
+                editor.setValue(t2);
             });
             $("#b3").click(function () {
-          
+                nowT[0] = t.val();
+                nowT = t3;
+                editor.setValue(t3);
             });
             $("#b4").click(function () {
-      
+                nowT[0] = t.val();
+                nowT = t4;
+                editor.setValue(t4);
             });
         });
     </script>
@@ -109,9 +133,9 @@
                 'emoji'
             ],
             upload: {
-                'url': '/upload',
-                'fileKey': 'upfile',
-                'connectionCount': 4
+                'url': '/Common/Upload/Index',
+
+                'connectionCount': 8
             },
             pasteImage: true,
             emoji: {
