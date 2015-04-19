@@ -4,5 +4,122 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add</h2>
+@section head
+{
+    <link href="~/Scripts/bower_components/fex-webuploader/dist/webuploader.css" rel="stylesheet" />
+    <link href="~/Scripts/bower_components/fontawesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Scripts/bower_components/simditor/styles/simditor.css" rel="stylesheet" />
+    <link href="~/Scripts/bower_components/simditor-emoji/styles/simditor-emoji.css" rel="stylesheet" />
+}
+
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加试题</strong> / <small>AddQuestions</small></div>
+</div>
+
+<div class="am-g">
+    <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+            <div class="am-btn-toolbar am-fl">
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-default" id="b0"><span class="am-icon-plus"></span> 编辑题目</button>
+                </div>
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-default" id="b1"><span class="am-icon-plus"></span> A选项</button>
+                </div>
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-default" id="b2"><span class="am-icon-plus"></span> B选项</button>
+                </div>
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-default" id="b3"><span class="am-icon-plus"></span> C选项</button>
+                </div>
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-default" id="b4"><span class="am-icon-plus"></span> D选项</button>
+                </div>      
+            </div>          
+        </div>
+
+    </div>
+    <form class="am-form" style="display:inline-block;height:30px">
+        <div class="am-form-group " style="margin-bottom: 0">
+            <input type="number" id="score" placeholder="请输入分值" required>
+        </div>
+    </form>
+
+</div>
+<br/>
+<div class="am-g">
+    <div class=" am-u-sm-centered">
+         
+            <textarea rows="5" placeholder="请输入题目" id="editor" autofocus></textarea>
+
+        <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+    </div>
+</div>
+
+@section scripts
+{
+    
+    <script src="~/Scripts/bower_components/fex-webuploader/dist/webuploader.js"></script>
+    <script src="~/Scripts/bower_components/simple-module/lib/module.js"></script>
+    <script src="~/Scripts/bower_components/simple-hotkeys/lib/hotkeys.js"></script>
+    
+    <script src="~/Scripts/bower_components/simple-uploader/lib/uploader.js"></script>
+    <script src="~/Scripts/bower_components/simditor/lib/simditor.js"></script>
+    <script src="~/Scripts/bower_components/simditor-emoji/lib/simditor-emoji.js"></script>
+    <script src="~/Scripts/bower_components/simditor-markdown/lib/simditor-markdown.js"></script>
+
+    <script>
+        $(function () {
+            var text = $("#editor").val();
+            $("#b0").click(function() {
+                alert(text);
+            });
+            $("#b1").click(function () {
+       
+            });
+            $("#b2").click(function () {
+      
+            });
+            $("#b3").click(function () {
+          
+            });
+            $("#b4").click(function () {
+      
+            });
+        });
+    </script>
+    
+    <script>
+        var editor = new Simditor({
+            textarea: $('#editor'),
+            toolbar: [
+                'title',
+                'bold',
+                'underline',
+                'strikethrough',
+                'color',
+                'ol', 'ul',
+                'blockquote',
+                'code',
+                'table',
+                'link',
+                'image',
+                'hr',
+                'indent', 'outdent',
+                'emoji'
+            ],
+            upload: {
+                'url': '/upload',
+                'fileKey': 'upfile',
+                'connectionCount': 4
+            },
+            pasteImage: true,
+            emoji: {
+                imagePath: '/Scripts/bower_components/simditor-emoji/images/emoji/'
+            },
+            markdown: true
+        });
+    </script>
+
+}
 
