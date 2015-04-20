@@ -35,6 +35,7 @@ namespace OnlineLearning.Areas.Students.Controllers
         public ActionResult Test(int id)
         {
             var stu = GetStudentId();
+            
             return View();
         }
 

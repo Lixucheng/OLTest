@@ -26,7 +26,6 @@ namespace OnlineLearning.Areas.Admin.Controllers
 
         public ActionResult GetAll()
         {
-
             var x = Sgt.GetQuestion().GetAll();
             ViewBag.list = x;
             ViewBag.count = x.Count;

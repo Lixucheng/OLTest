@@ -97,12 +97,7 @@ namespace OnlineLearning.Areas.Common.Controllers
                     filterContext.Result = new RedirectResult("~/admin/manage/tlogin");
                     return;
                 }
-                var x = Session["login"] as TeacherAccount;
-                if (x==null)
-                {
-                    filterContext.Result = new RedirectResult("~/admin/manage/tlogin");
-                    return;
-                }
+            
     
             }
 
@@ -123,8 +118,8 @@ namespace OnlineLearning.Areas.Common.Controllers
 
         public int GetTeacherId()
         {
-            var x = Session["login"] as TeacherAccount;
-            return x.ID;
+            var y = Request.Cookies["login"];
+            return int.Parse(y.Values["id"]);
         }
     }
 }
