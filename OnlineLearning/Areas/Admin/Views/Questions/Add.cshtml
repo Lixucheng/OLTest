@@ -43,8 +43,14 @@
         <div class="am-form-group " style="margin-bottom: 0">
             <input type="number" id="score" placeholder="请输入分值" required>
         </div>
-        <div class="am-form-group " style="margin-bottom: 0">
-            <input type="text" id="answer" placeholder="请输入答案" required>
+        <div class="am-form-group " style="margin-bottom: 0;width: 100px">
+            <select  required  id="answer">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+            <span class="am-form-caret"></span>
         </div>
 
     </form>
@@ -56,7 +62,7 @@
          
         <textarea rows="5" placeholder="请输入内容" id="editor" autofocus></textarea>
         <br/>
-        <button type="button" class="am-btn am-btn-primary am-radius" style="position: absolute;right: 5%;bottom: 0">提交</button>
+        <button type="button" id="submit" class="am-btn am-btn-primary am-radius" style="position: absolute;right: 5%;bottom: 0">提交</button>
 
         <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
     </div>
@@ -82,8 +88,8 @@
             var t2 = [""];
             var t3 = [""];
             var t4 = [""];
-            var score = 0;
-            var trueop = "";
+            var score = $("#score");
+            var trueop =$("#answer");
             var nowT = t0;
             $("#b0").click(function () {
                 nowT[0]= t.val();
@@ -110,6 +116,54 @@
                 nowT = t4;
                 editor.setValue(t4);
             });
+            $("#submit").click(function () {
+
+                if (t0 == [""]) {
+                    alert("题目不能为空");
+                }
+                else if (t1 == [""]) {
+                    alert("A选项不能为空");
+                }
+                else if (t2 == [""]) {
+                    alert("B选项不能为空");
+                }
+                else if (t3 == [""]) {
+                    alert("C选项不能为空");
+                }
+                else if (t4 == [""]) {
+                    alert("D选项不能为空");
+                }
+                else if (score.val()==0) {
+                    alert("分值不能为空");
+                }
+                else if (trueop.val() == [""]) {
+                    alert("答案不能为空");
+                } else {
+                    $.ajax({
+                        url: "/Admin/Questions/AddTest",
+                        data: {
+                            content: t0[0],
+                            aop: t1[0],
+                            bop: t2[0],
+                            cop: t3[0],
+                            dop: t4[0],
+                            correctop: trueop.val(),
+                            score: score.val()
+                        },
+                        success: function (res) {
+                            if (res == 0) {
+                                alert("添加失败");
+                            } else {
+                                alert("成功");
+                                window.location.href = "/Admin/Questions/Add";
+                            }
+                        }
+                        
+                    });
+                }
+                
+            });
+
         });
     </script>
     

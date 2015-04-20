@@ -73,21 +73,20 @@ namespace OnlineLearning.Models.Adapter
             }
 
             var　question=new Question()
-            {
-                Question1 = content,
+            {           
                 A_op=aop,
                 B_op=bop,
                 C_op=cop,
                 D_op=dop,
                 correct_op=correctop,
                 Image=image,
-
-                score = score
+                score = score,
+                Question1 = content
             };
 
             Db.Question.Add(question);
             Db.SaveChanges();
-            return question.Id;
+            return 1;
         }
 
         #endregion
