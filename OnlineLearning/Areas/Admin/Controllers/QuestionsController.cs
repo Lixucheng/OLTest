@@ -15,7 +15,8 @@ namespace OnlineLearning.Areas.Admin.Controllers
         {
             return View();
         }
-        
+
+        [ValidateInput(false)]
         public int AddTest(string content, string aop, string bop, string cop, string dop, string correctop, string score)
         {
  
