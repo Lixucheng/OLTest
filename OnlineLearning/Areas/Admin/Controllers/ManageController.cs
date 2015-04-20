@@ -32,9 +32,10 @@ namespace OnlineLearning.Areas.Admin.Controllers
             return View();
         }
 
-        public void TestDel(int testid)
+        public ActionResult TestDel(int id)
         {
-            Sgt.GetTest().Del(testid);
+            Sgt.GetTest().Del(id);
+            return Redirect("/admin/manage/test");
         }
 
         public void TestUpdate(int id, string name, TimeSpan time)

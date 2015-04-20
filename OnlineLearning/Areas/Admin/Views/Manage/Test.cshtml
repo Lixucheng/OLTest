@@ -79,9 +79,8 @@
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-
-                                            <a href="/Agent/Lesson/list/@Tempx.ID " class=" am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span>查看课程</a>
-                                            <a onclick="delclick(@Tempx.ID)" id="delbutton" class=" am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
+                                            <a href="" class=" am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span>查看课程</a>
+                                            <a href="/Admin/Manage/TestDel/@Tempx.ID" class=" am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
                                         </div>
                                     </div>
                                 </td>
@@ -114,16 +113,6 @@
 <script src="~/Scripts/Other/jquery.tablesorter.js"></script>
 
     <script>
-        function delclick(id) {
-            $.ajax({
-                type: "post",
-                url: '/Admin/manage/testdel',
-                data: "testid=" + id,
-                success: function() {
-                    $("#" + id).remove();
-                }
-            });
-        };
 
         $("#addbutton").click(function () { $("#addform").show();});
 
