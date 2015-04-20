@@ -22,5 +22,15 @@ namespace OnlineLearning.Areas.Admin.Controllers
  
             return Sgt.GetQuestion().Add(content, aop, bop, cop, dop, correctop, "", int.Parse(score));        
         }
+
+
+        public ActionResult GetAll()
+        {
+
+            var x = Sgt.GetQuestion().GetAll();
+            ViewBag.list = x;
+            ViewBag.count = x.Count;
+            return View();
+        }
     }
 }

@@ -189,6 +189,7 @@
     <Compile Include="Models\Answer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Helper\HQuestion.cs" />
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -672,6 +673,7 @@
     <Content Include="Scripts\bower_components\simple-uploader\src\uploader.coffee" />
     <Content Include="Scripts\bower_components\webuploader\.bower.json" />
     <Content Include="Scripts\bower_components\webuploader\README.md" />
+    <Content Include="Areas\Admin\Views\Questions\GetAll.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bower_components\amazeui\dist\css\amazeui.css" />
     <Content Include="Scripts\bower_components\amazeui\dist\css\amazeui.flat.css" />
