@@ -1,4 +1,11 @@
 
+p {
+    display: inline-block;
+}
+
+p:first-child {
+    display: block;
+}
 .table{
     position: relative;
     padding-left: 20px;

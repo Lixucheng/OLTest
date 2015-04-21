@@ -17,19 +17,26 @@
                </tr>
            </thead>
      <tbody id="itemContainer">
-        @foreach (var Tempx in ViewBag.test)
-        {
-            <tr id="@Tempx.ID">
-                <td class="edit noer" style="padding-left:30px;"> @Tempx.Name</td>
-                <td class="edit captioner">@Tempx.Time</td>
-                <td>
-                    <div class="am-btn-toolbar">
-                        <div class="am-btn-group am-btn-group-xs">
-                            <a href="/Students/Index/test/@Tempx.ID" class=" am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span>开始考试</a>
+         @{
+             if (ViewBag.count == 0)
+             {
+                 <ul>没有考试信息！</ul>
+             }
+            foreach (var Tempx in ViewBag.test)
+            {
+
+                <tr id="@Tempx.ID">
+                    <td class="edit noer" style="padding-left: 30px;"> @Tempx.Name</td>
+                    <td class="edit captioner">@Tempx.Time</td>
+                    <td>
+                        <div class="am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-xs">
+                                <a href="/Students/Index/test/@Tempx.ID" class=" am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span>开始考试</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

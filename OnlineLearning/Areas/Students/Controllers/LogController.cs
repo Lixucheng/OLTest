@@ -28,7 +28,7 @@ namespace OnlineLearning.Areas.Students.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePasswork(string password)
+        public ActionResult UpdatePassword(string password)
         {
             Sgt.GetAccount().EditPassWord(GetStudentId(), password);
             return Redirect("~/Students/Index/Index");

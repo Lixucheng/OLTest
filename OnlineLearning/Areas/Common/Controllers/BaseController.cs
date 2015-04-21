@@ -123,10 +123,16 @@ namespace OnlineLearning.Areas.Common.Controllers
             return View(Sgt.GetAccount().GetAccountByStudentNum(long.Parse(num)));
         }
 
-        public int GetStudentId()
+        public int GetStudentNum()
         {
             var y = Request.Cookies["login"]; 
             return int.Parse(y.Values["StudentNum"]);
+        }
+
+        public int GetStudentId()
+        {
+            int num = GetStudentNum();
+            return Sgt.GetAccount().GetAccountByStudentNum(num).Id;
         }
 
 

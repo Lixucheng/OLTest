@@ -135,7 +135,7 @@ namespace OnlineLearning.Models.Adapter
                     sco += e.score;
                 }
             });
-            Sgt.GetScore().Add(studentid, testid, sco);
+            Sgt.GetScore().Add(studentid, testid, sco,Sgt.GetTest().Find(testid).Name);
         }
     }
 

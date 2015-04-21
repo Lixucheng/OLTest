@@ -206,6 +206,11 @@ namespace OnlineLearning.Models.Adapter
 
         #endregion
 
+        public double GetOneScore(int stuid,int testid)
+        {
+            return Db.Score.FirstOrDefault(e => e.StudentId == stuid && e.TestId == testid).Score1;
+        }
+
     }
 
 }
