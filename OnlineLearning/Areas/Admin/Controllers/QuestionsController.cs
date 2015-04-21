@@ -31,5 +31,10 @@ namespace OnlineLearning.Areas.Admin.Controllers
             ViewBag.count = x.Count;
             return View();
         }
+
+        public void Del(int id)
+        {
+            Sgt.GetQuestion().Remove(id);
+        }
     }
 }

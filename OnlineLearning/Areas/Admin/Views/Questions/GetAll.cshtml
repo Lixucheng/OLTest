@@ -69,7 +69,6 @@
                 </tbody>
             </table>
             <div class="am-cf">
-                共 @ViewBag.count 条记录
                 <div class="am-fr">
                     <div class="holder am-pagination"></div>
                 </div>
@@ -94,8 +93,8 @@
         function delclick(id) {
             $.ajax({
                 type: "post",
-                url: '/Admin/manage/testdel',
-                data: "testid=" + id,
+                url: '/Admin/questions/del',
+                data: "id=" + id,
                 success: function() {
                     $("#" + id).remove();
                 }

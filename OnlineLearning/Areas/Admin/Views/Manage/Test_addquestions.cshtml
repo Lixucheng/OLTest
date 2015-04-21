@@ -1,8 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Test_getquestions";
+    ViewBag.Title = "Test_questions";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+
 
 @section head{
     <link href="~/Scripts/bower_components/jPages/css/jPages.css" rel="stylesheet" />
@@ -26,8 +28,9 @@
         }
     </style>
 }
+
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">试题</strong> / <small>@ViewBag.test</small></div>
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg" id="">编辑试题</strong> / <small>@ViewBag.test</small></div>
 </div>
 
 <div class="am-g">
@@ -43,7 +46,7 @@
                 <tbody id="itemContainer">
                     @if (ViewBag.count == 0)
                     {
-                        @: 无信息！
+                        @*@: 无信息！*@
                     }
                     else
                     {
@@ -59,7 +62,7 @@
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <a onclick="delclick(@Tempx.Id)" id="delbutton" class=" am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
+                                            <a value="0" onclick="Addclick(@Tempx.Id)" id="button_@Tempx.Id" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span> 添加</a>
                                         </div>
                                     </div>
                                 </td>
@@ -70,6 +73,7 @@
                 </tbody>
             </table>
             <div class="am-cf">
+                共 @ViewBag.count 条记录
                 <div class="am-fr">
                     <div class="holder am-pagination"></div>
                 </div>
@@ -77,11 +81,16 @@
             <hr />
             <p id="xxx">注：哇哈哈哈哈哈哈哈</p>
         </form>
+        
+
     </div>
 </div>
 
 
-
+@foreach (var x in ViewBag.added)
+{
+    <div class="add" value="@x.Id">@x.Id</div>
+}
 
 @section scripts{
 
@@ -91,23 +100,60 @@
     <script src="~/Scripts/Other/jquery.tablesorter.js"></script>
 
     <script>
-        function delclick(id) {
-            $.ajax({
-                type: "post",
-                url: '/Admin/manage/Test_delquestions',
-                data: {
-                    testid: @Model,
-                    questid: id
-                },
-                success: function () {
-                    $("#" + id).remove();
-                }
+        $(function() {
+            var x=$(".add");
+            x.each(function() {
+                var but = $("#button_" + $(this).text()); 
+                but.addClass("am-active").html("已添加");
+                but.attr("value",1);
             });
+
+        });
+
+        function Addclick(id) {         
+            var but = $("#button_" + id);      
+            if (but.attr("value")=="0") {
+                $.ajax({
+                    type: "post",
+                    url: '/Admin/manage/Test_addquestions',
+                    data: {
+                        testid: @Model,
+                        questid: id
+                    },
+                    success: function(r) {
+                        if (r == 1) {
+                            but.addClass("am-active").html("已添加");
+                            but.attr("value",1);
+                        }
+                    }
+                });
+            }
+            else
+            {
+                {
+                    $.ajax({
+                        type: "post",
+                        url: '/Admin/manage/Test_delquestions',
+                        data: {
+                            testid: @Model,
+                            questid: id
+                        },
+                        success: function(res) {
+                            if (res == 1) {
+                                but.removeClass("am-active").html("<span class='am-icon-copy'></span> 添加");
+                                but.attr("value",0);
+                            }
+                        }
+                    });
+
+                }
+            };
         };
 
-        $("#addbutton").click(function () { window.location.href = "/Admin/questions/GeyAll"; });
 
-        $(function () {
+        $("#addbutton").click(function() { window.location.href = "/Admin/questions/GeyAll"; });
+
+        $(function() {
             $("#addform").hide();
             $("#table").tablesorter({ sortList: [[1, 0]] });
             $("div.holder").jPages({
@@ -116,9 +162,8 @@
             });
 
 
-
             $(".edit").editable({
-                onSubmit: function () {
+                onSubmit: function() {
                     var ider = this.parent().find(".ider").text();
                     var nameer = this.parent().find(".nameer").text();
                     var timeer = this.parent().find(".timeer").text();
@@ -135,11 +180,10 @@
             });
 
 
-
-
-
         });
+
     </script>
+
 
 }
 

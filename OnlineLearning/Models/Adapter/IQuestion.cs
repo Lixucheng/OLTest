@@ -111,7 +111,6 @@ namespace OnlineLearning.Models.Adapter
         }
         #endregion
 
-
         #region 修改问题 +bool Update(int keyid,string aop,string bop,string cop,string dop,string image,int score)
 
         /// <summary>
@@ -254,5 +253,22 @@ namespace OnlineLearning.Models.Adapter
             return r;
         }
 
+        public HQuestion GetHQuestionById(int id)
+        {
+            var e = Find(id);
+            var res = new HQuestion()
+            {
+                A_op = new HtmlString(e.A_op),
+                B_op = new HtmlString(e.B_op),
+                C_op = new HtmlString(e.C_op),
+                D_op = new HtmlString(e.D_op),
+                Id = e.Id,
+                Image = e.Image,
+                Question1 = new HtmlString(e.Question1),
+                correct_op = e.correct_op,
+                score = e.score         
+            };
+            return res;
+        }
     }
 }

@@ -59,6 +59,8 @@ namespace OnlineLearning.Areas.Admin.Controllers
             ViewBag.list = x;
             ViewBag.count = x.Count;
             ViewBag.test = Sgt.GetTest().Find(id).Name;
+            var added = Sgt.GetITest_question().GetQuestionsByTestId(id);
+            ViewBag.added = added;
             return View(id);
         }
 
@@ -68,10 +70,19 @@ namespace OnlineLearning.Areas.Admin.Controllers
             return Sgt.GetITest_question().Add(testid, questid) ? 1 : 0;
         }
 
+        public int Test_delquestions(int testid, int questid)
+        {
+            return Sgt.GetITest_question().Del(testid, questid)?1:0;
+        }
+
         //查看一个test的习题
         public ActionResult Test_getquestions(int id)
         {
-            return View();
+            ViewBag.test = Sgt.GetTest().Find(id).Name;
+            var x = Sgt.GetITest_question().GetHQuestionsByTestId(id);
+            ViewBag.list = x;
+            ViewBag.count = x.Count;
+            return View(id);
         }
     }
 }

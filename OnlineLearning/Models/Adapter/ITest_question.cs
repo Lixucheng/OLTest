@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using OnlineLearning.Models.Helper;
 
 namespace OnlineLearning.Models.Adapter
 {
@@ -85,18 +86,33 @@ namespace OnlineLearning.Models.Adapter
             return true;
         }
 
+        public bool Del(int testid, int questid )
+        {
+            var x = Db.Test_question.FirstOrDefault(e => e.TestId == testid && e.QuestionId == questid);
+            if (x == null)
+            {
+                throw new Exception("没有你删什么！");
+            }
+            Db.Test_question.Remove(x);
+            Db.SaveChanges();
+            return true;
+        }
+
         /// <summary>
         /// 返回一个Test的习题
         /// </summary>
         /// <param name="testid"></param>
         /// <returns></returns>
+        public List<HQuestion> GetHQuestionsByTestId(int testid)
+        {
+            var list = Db.Test_question.Where(e => e.TestId == testid).ToList();
+            var ret = new List<HQuestion>();
+            list.ForEach(e => ret.Add(Sgt.GetQuestion().GetHQuestionById(e.QuestionId)));
+            return ret;
+        }
         public List<Question> GetQuestionsByTestId(int testid)
         {
             var list = Db.Test_question.Where(e => e.TestId == testid).ToList();
-            if (list.Count==0)
-            {
-                return null;
-            }
             var ret = new List<Question>();
             list.ForEach(e => ret.Add(Sgt.GetQuestion().Find(e.QuestionId)));
             return ret;
