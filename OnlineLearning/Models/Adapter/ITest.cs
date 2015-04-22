@@ -29,7 +29,7 @@ namespace OnlineLearning.Models.Adapter
             var x = Db.Test.Find(id);
             if (x == null)
             {
-                throw new Exception("没有这个考试");
+                return null;
             }
             return x;
         }
@@ -67,6 +67,7 @@ namespace OnlineLearning.Models.Adapter
             if (x==null)
                 throw new Exception("没有你删啥！");
             Db.Test.Remove(x);
+            Sgt.GetITest_question().DelTest(id);
             Db.SaveChanges();
             return true;
         }

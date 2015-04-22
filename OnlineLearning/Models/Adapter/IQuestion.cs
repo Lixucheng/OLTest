@@ -106,6 +106,7 @@ namespace OnlineLearning.Models.Adapter
                 throw new Exception("不存在该问题！");
             }
             Db.Question.Remove(question);
+            Sgt.GetITest_question().DelQuest(keyid);
             Db.SaveChanges();
             return true;
         }

@@ -11,9 +11,9 @@ namespace OnlineLearning.Models.Adapter
         //增加答案
         public bool Add(Models.Answer answer)
         {
-            if (answer.Answer1 == null || answer.questionId == null || answer.studentId == null || answer.TestId == null)
+            if (answer.Answer1==null)
             {
-                throw new Exception("模型的所有属性都不能为空");
+                answer.Answer1 = "";
             }
             Db.Answer.Add(answer);
             Db.SaveChanges();

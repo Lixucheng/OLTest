@@ -98,6 +98,21 @@ namespace OnlineLearning.Models.Adapter
             return true;
         }
 
+        public bool DelTest(int testid)
+        {
+            var x=Db.Test_question.Where(e => e.TestId == testid).ToList();
+            Db.Test_question.RemoveRange(x);
+            Db.SaveChanges();
+            return true;
+        }
+
+        public bool DelQuest(int questid)
+        {
+            var x = Db.Test_question.Where(e => e.QuestionId == questid).ToList();
+            Db.Test_question.RemoveRange(x);
+            Db.SaveChanges();
+            return true;
+        }
         /// <summary>
         /// 返回一个Test的习题
         /// </summary>
