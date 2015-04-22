@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OnlineLearning.Areas.Common.Controllers;
 using OnlineLearning.Attributes;
+using OnlineLearning.Models;
 
 namespace OnlineLearning.Areas.Admin.Controllers
 {
@@ -23,7 +24,7 @@ namespace OnlineLearning.Areas.Admin.Controllers
             return View();
         }
 
-
+        //试题模块
         public ActionResult Test()
         {
             var x = Sgt.GetTest().GetTests();
@@ -50,6 +51,8 @@ namespace OnlineLearning.Areas.Admin.Controllers
             Sgt.GetTest().Add(name, time);
             return Redirect("test");
         }
+
+
 
         //给试题添加习题
         [HttpGet]
@@ -83,6 +86,30 @@ namespace OnlineLearning.Areas.Admin.Controllers
             ViewBag.list = x;
             ViewBag.count = x.Count;
             return View(id);
+        }
+
+        [HttpGet]
+        //得到一个考试的成绩
+        public ActionResult GetScore(int id)
+        {
+            var list = Sgt.GetScore().GetAllHScoresWithAccount(id);
+            ViewBag.list = list;
+            ViewBag.count = list.Count;
+            ViewBag.Class = Sgt.GetAccount().GetClassNames();
+            ViewBag.test = Sgt.GetTest().Find(id).Name;
+            ViewBag.id = id;
+            return View();
+        }
+
+        public ActionResult GetClassScore(int id, string classname)
+        {
+            ViewBag.id = id;
+            var list = Sgt.GetScore().GetClassHScoresWithAccount(classname,id);
+            ViewBag.list = list;
+            ViewBag.count = list.Count;
+            ViewBag.Class = Sgt.GetAccount().GetClassNames();
+            ViewBag.test = Sgt.GetTest().Find(id).Name;
+            return View();
         }
     }
 }

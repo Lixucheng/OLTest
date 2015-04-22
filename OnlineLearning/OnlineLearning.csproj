@@ -190,6 +190,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Helper\HQuestion.cs" />
+    <Compile Include="Models\Helper\HScore.cs" />
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -677,6 +678,8 @@
     <Content Include="Areas\Admin\Views\Manage\Test_addquestions.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Test_getquestions.cshtml" />
     <Content Include="Areas\Students\Views\Index\GetThisScore.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\GetScore.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\GetClassScore.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bower_components\amazeui\dist\css\amazeui.css" />
     <Content Include="Scripts\bower_components\amazeui\dist\css\amazeui.flat.css" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using OnlineLearning.Models.Helper;
 
 namespace OnlineLearning.Models.Adapter
 {
@@ -208,8 +209,49 @@ namespace OnlineLearning.Models.Adapter
 
         public double GetOneScore(int stuid,int testid)
         {
-            return Db.Score.FirstOrDefault(e => e.StudentId == stuid && e.TestId == testid).Score1;
+            var firstOrDefault = Db.Score.FirstOrDefault(e => e.StudentId == stuid && e.TestId == testid);
+            if (firstOrDefault != null)
+                return firstOrDefault.Score1;
+            return -1;
         }
+
+        public Score FindScore(int stuid, int testid)
+        {
+            var firstOrDefault = Db.Score.FirstOrDefault(e => e.StudentId == stuid && e.TestId == testid);
+            if (firstOrDefault != null)
+                return firstOrDefault;
+            return new Score()
+            {
+                Score1 = -1,TestId=testid,StudentId = stuid
+            };
+        }
+
+        //供老师查看。需要带学生信息
+        public List<HScore> GetAllHScoresWithAccount(int testid)
+        {
+            var x = Db.Score.Where(e => e.TestId == testid).ToList();
+            var ret = new List<HScore>();
+            x.ForEach(e => ret.Add(new HScore()
+            {
+                Score = e,
+                Account = Sgt.GetAccount().Find(e.StudentId)
+            }));
+            return ret;
+        }
+
+        public List<HScore> GetClassHScoresWithAccount(string classname, int testid)
+        {
+            var stu = Sgt.GetAccount().GetAccountsByClassname(classname);
+          
+            var ret = new List<HScore>();
+            stu.ForEach(e => ret.Add(new HScore()
+            {
+              Account = e,
+              Score = FindScore(e.Id,testid)
+            }));
+            return ret;
+        }
+
 
     }
 

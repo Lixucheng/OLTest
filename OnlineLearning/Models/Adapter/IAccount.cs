@@ -180,5 +180,25 @@ namespace OnlineLearning.Models.Adapter
         {
             return Db.Account.Find(Id);
         }
+
+        public List<Account> GetAccountsByClassname(string classname)
+        {
+          return   Db.Account.Where(e => e.Class == classname).ToList();
+        }
+
+        public List<string> GetClassNames()
+        {
+           var x= Db.Account.ToList();
+            var name = new List<string>();
+            x.ForEach(e =>
+            {
+                var al=name.Find(a => a == e.Class);
+                if (al==null)
+                {
+                    name.Add(e.Class);
+                }
+            });
+            return name;
+        }
     }
 }
