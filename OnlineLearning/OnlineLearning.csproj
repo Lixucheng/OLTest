@@ -680,6 +680,7 @@
     <Content Include="Areas\Students\Views\Index\GetThisScore.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\GetScore.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\GetClassScore.cshtml" />
+    <None Include="Properties\PublishProfiles\PubSet.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bower_components\amazeui\dist\css\amazeui.css" />
     <Content Include="Scripts\bower_components\amazeui\dist\css\amazeui.flat.css" />

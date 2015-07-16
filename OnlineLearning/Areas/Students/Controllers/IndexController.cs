@@ -65,8 +65,19 @@ namespace OnlineLearning.Areas.Students.Controllers
 
         public ActionResult GetThisScore(int id)
         {
-            Sgt.GetTest().CalculateScore(id,GetStudentId());
+            ViewBag.right= Sgt.GetTest().CalculateScore(id,GetStudentId());
             ViewBag.score = Sgt.GetScore().GetOneScore(GetStudentId(),id);
+            var studentid = GetStudentId();
+            var answer = Db.Answer.Count(e => e.studentId == studentid && e.TestId == id&&!string.IsNullOrEmpty(e.Answer1));
+            var all = Db.Test_question.Count(e => e.TestId == id);
+
+            var scoreall = 0;
+            Db.Test_question.Where(e => e.TestId == id).ToList().ForEach(e=> { scoreall += Db.Question.Find(e.QuestionId).score; });
+            ViewBag.scoreall = scoreall;
+            ViewBag.answer = answer;
+            ViewBag.all = all;
+            ViewBag.s1 = answer*1.0/all*100.0;
+            ViewBag.s2 = ViewBag.score*1.0 / scoreall*100.0;
             return View();
         }
 

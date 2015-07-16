@@ -41,7 +41,7 @@
 }
 
 
-<div id="submit"><input type="button" value="提交试卷" onclick="sub()" class="am-btn am-btn-secondary am-radius"></div>
+<div id="submit"><input type="button" value="提交试卷" onclick="sub()" class="am-btn am-btn-secondary am-radius" style="margin-top:  20px"></div>
 
 @section scripts{
     <script type="text/javascript">
@@ -71,8 +71,9 @@
                         answer:answer
                     }
                 });
-
-            });
+            
+        });
+            alert("考试结束！随后跳到查看成绩界面");
             window.location.href = "/students/index/GetThisScore/"+@ViewBag.testid;
 
         }

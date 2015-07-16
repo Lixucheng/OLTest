@@ -124,8 +124,9 @@ namespace OnlineLearning.Models.Adapter
         /// </summary>
         /// <param name="testid"></param>
         /// <param name="studentid"></param>
-        public void CalculateScore(int testid, int studentid)
+        public int CalculateScore(int testid, int studentid)
         {
+            var right = 0;
             var questions = GetQuestionsByTestId(testid);
             int sco=0;
             questions.ForEach(e =>
@@ -134,9 +135,11 @@ namespace OnlineLearning.Models.Adapter
                 if (answer.Answer1==e.correct_op)
                 {
                     sco += e.score;
+                    right++;
                 }
             });
             Sgt.GetScore().Add(studentid, testid, sco,Sgt.GetTest().Find(testid).Name);
+            return right;
         }
     }
 
