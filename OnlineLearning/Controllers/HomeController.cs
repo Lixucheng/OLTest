@@ -10,7 +10,7 @@ namespace OnlineLearning.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return Redirect("Students/Index/Index");
         }
 
         public ActionResult About()
