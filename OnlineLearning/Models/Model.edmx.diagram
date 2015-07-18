@@ -6,13 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="04831329ae0b49648fa340541ca02510" Name="Diagram1">
         <EntityTypeShape EntityType="lxc_OnlineLearningModel.Account" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Answer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lxc_OnlineLearningModel.part" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Question" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Score" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lxc_OnlineLearningModel.TeacherAccount" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Test" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Test_question" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Answer" Width="1.5" PointX="2.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="lxc_OnlineLearningModel.part" Width="1.5" PointX="8.625" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Question" Width="1.5" PointX="8.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Score" Width="1.5" PointX="4" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="lxc_OnlineLearningModel.TeacherAccount" Width="1.5" PointX="3.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Test" Width="1.5" PointX="8.375" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="lxc_OnlineLearningModel.Test_question" Width="1.5" PointX="6.5" PointY="2.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

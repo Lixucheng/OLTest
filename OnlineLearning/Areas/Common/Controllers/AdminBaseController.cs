@@ -27,10 +27,10 @@ namespace OnlineLearning.Areas.Common.Controllers
         /// <param name="account"></param>
         protected void AddLoginCookie(string name, TeacherAccount account)
         {
-            var cookic = new HttpCookie(name);
-            cookic.Values["id"] = account.ID.ToString(CultureInfo.InvariantCulture);
+            var cookic = new HttpCookie(name);         //根据name实例化一个httpcookie
+            cookic.Values["id"] = account.ID.ToString(CultureInfo.InvariantCulture);  //向cookie中添加信息
             cookic.Values["time"] = DateTime.Now.ToString(CultureInfo.InvariantCulture);
-            Response.Cookies.Add(cookic);      
+            Response.Cookies.Add(cookic);      //传递给浏览器
         }
 
         /// <summary>
@@ -53,14 +53,14 @@ namespace OnlineLearning.Areas.Common.Controllers
         [Public]
         public int Login(int num, string password)
         {
-            var account = Sgt.GetTeacherAccount().Find(num);
-            if (account == null||account.PassWord!=password)
+            var account = Sgt.GetTeacherAccount().Find(num);//根据输入的学号查找学生类
+            if (account == null||account.PassWord!=password)//判断密码正确或者错误
             {
                 return 0;
             }
-            AddLoginCookie("login",account);
+            AddLoginCookie("login",account);                          //密码正确就添加cookic
             AddLoginSession("login",account);
-            return account.ID;
+            return account.ID;  
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace OnlineLearning.Areas.Common.Controllers
         public ActionResult Logout()
         {
             Session["login"]=null;
-            Response.Cookies["login"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["login"].Expires = DateTime.Now.AddDays(-1);//向浏览器返回信息使cookie失效
             return Redirect("~/admin/manage/tlogin");
         }
 

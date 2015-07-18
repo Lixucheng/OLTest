@@ -34,13 +34,18 @@ namespace OnlineLearning.Areas.Students.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 考试界面
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Test(int id)
         {
-            var stu = GetStudentId();
-            var quest = Sgt.GetITest_question().GetHQuestionsByTestId(id);
-            ViewBag.list = quest;
-            ViewBag.time = Sgt.GetTest().Find(id).Time.TotalSeconds;
-            ViewBag.studentid = stu;
+            var stu = GetStudentId();//获取当前登录的学生
+            var quest = Sgt.GetITest_question().GetHQuestionsByTestId(id); //获取要进行考试的习题List
+            ViewBag.list = quest;                                                                  //将习题list传给界面
+            ViewBag.time = Sgt.GetTest().Find(id).Time.TotalSeconds;           //将考试时间传给界面
+            ViewBag.studentid = stu;                                                            //学生信息
             ViewBag.testid = id;
             ViewBag.testname = Sgt.GetTest().Find(id).Name;
             return View();

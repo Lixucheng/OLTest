@@ -49,7 +49,12 @@ namespace OnlineLearning.Models.Adapter
             if (time == TimeSpan.Zero)
             {
                 throw new Exception("时间不能为0");
-            }      
+            }
+            var y = Db.Test.FirstOrDefault(a => a.Name == x);
+            if (y != null)
+            {
+                throw new Exception("不能重复");
+            }
             var t=new Test {Name = x,Time = time};
             Db.Test.Add(t);
             Db.SaveChanges();
