@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "GetScore";
+    Layout = "~/Areas/Students/Views/Shared/_Layout.cshtml";
+}
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">查看成绩</strong> / <small>Score</small></div>
+</div>
+
+<table class="am-table am-table-striped am-table-hover table-main" id="table">
+    <thead>
+        <tr>
+            <th class="table-name" style="padding-left:40px;">名字</th>
+            <th class="table-date">分数</th>
+        </tr>
+    </thead>
+    <tbody id="itemContainer">
+        @{
+            if (ViewBag.count == 0)
+            {
+                <ul>没有信息！</ul>
+            }
+            foreach (var Tempx in ViewBag.list)
+            {
+                <tr id="@Tempx.Id">
+                    <td class="edit noer" style="padding-left: 30px;"> @Tempx.TestName</td>
+                    <td class="edit captioner">@Tempx.Score1</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
