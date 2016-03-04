@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 
 namespace OnlineLearning.Models.Helper
 {
@@ -17,5 +14,4 @@ namespace OnlineLearning.Models.Helper
         public int score { get; set; }
         public HtmlString Question1 { get; set; }
     }
-
 }

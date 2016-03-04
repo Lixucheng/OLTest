@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 
@@ -14,17 +11,17 @@ namespace OnlineLearning.Areas.Common.Controllers
         public string Index()
         {
             var filecollection = Request.Files;
-            string err = string.Empty;
-            string subFolder = string.Empty;
-            string filePath = string.Empty;
+            var err = string.Empty;
+            var subFolder = string.Empty;
+            var filePath = string.Empty;
             ;
-            HttpPostedFileBase postedfile = filecollection[0];
+            var postedfile = filecollection[0];
             if (postedfile == null)
             {
                 return null;
             }
-            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(Path.GetFileName(postedfile.FileName));
-            string fullUrl = Path.Combine(Server.MapPath(@"~/uploadTmp"));
+            var fileName = Guid.NewGuid() + Path.GetExtension(Path.GetFileName(postedfile.FileName));
+            var fullUrl = Path.Combine(Server.MapPath(@"~/uploadTmp"));
             if (Directory.Exists(fullUrl) == false)
             {
                 Directory.CreateDirectory(fullUrl); //如果文件夹不存在，直接创建文件夹。

@@ -1,150 +1,157 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using OnlineLearning.Models.Adapter;
+﻿using OnlineLearning.Models.Adapter;
 
 namespace OnlineLearning.Models
 {
     public class Singleton
     {
-        #region Context
-        //数据库上下文单例
-        protected OnlineLearningEntities TheContext;
-
-        /// <summary>
-        /// 获取数据库上下文
-        /// </summary>
-        /// <returns></returns>
-        public OnlineLearningEntities GetDbContext()
-        {
-            return TheContext ?? (TheContext = new OnlineLearningEntities());
-        }
-        #endregion
-
         public void Dispose()
         {
             if (TheContext != null)
                 TheContext.Dispose();
         }
 
-       
+        #region Context
+
+        //数据库上下文单例
+        protected OnlineLearningEntities TheContext;
+
+        /// <summary>
+        ///     获取数据库上下文
+        /// </summary>
+        /// <returns></returns>
+        public OnlineLearningEntities GetDbContext()
+        {
+            return TheContext ?? (TheContext = new OnlineLearningEntities());
+        }
+
+        #endregion
 
         #region Account
+
         //数据库上下文单例
-        protected Models.Adapter.IAccount Account;
+        protected IAccount Account;
 
         /// <summary>
-        /// 获取数据库上下文
+        ///     获取数据库上下文
         /// </summary>
         /// <returns></returns>
-        public Models.Adapter.IAccount GetAccount()
+        public IAccount GetAccount()
         {
-            return Account ?? (Account = new Adapter.IAccount());
+            return Account ?? (Account = new IAccount());
         }
-        #endregion
 
+        #endregion
 
         #region Score
+
         //分数上下文单例
-        protected Models.Adapter.IScore Score;
+        protected IScore Score;
 
         /// <summary>
-        /// 获取分数上下文
+        ///     获取分数上下文
         /// </summary>
         /// <returns></returns>
-        public Models.Adapter.IScore GetScore()
+        public IScore GetScore()
         {
-            return Score ?? (Score = new Adapter.IScore());
+            return Score ?? (Score = new IScore());
         }
+
         #endregion
 
-
         #region Test
+
         //测试上下文单例
-        protected Adapter.ITest Test;
+        protected ITest Test;
 
         /// <summary>
-        /// 获取考试上下文
+        ///     获取考试上下文
         /// </summary>
         /// <returns></returns>
-        public Adapter.ITest GetTest()
+        public ITest GetTest()
         {
-            return Test ?? (Test = new Adapter.ITest());
+            return Test ?? (Test = new ITest());
         }
+
         #endregion
 
         #region teacherAccount
+
         //数据库上下文单例
-        protected Models.Adapter.ITeacherAccount TeacherAccount;
+        protected ITeacherAccount TeacherAccount;
 
         /// <summary>
-        /// 获取数据库上下文
+        ///     获取数据库上下文
         /// </summary>
         /// <returns></returns>
         public ITeacherAccount GetTeacherAccount()
         {
             return TeacherAccount ?? (TeacherAccount = new ITeacherAccount());
         }
+
         #endregion
 
         #region Answer
+
         //答案上下文单例
         protected IAnswer Answer;
 
         /// <summary>
-        /// 获取答案上下文
+        ///     获取答案上下文
         /// </summary>
         /// <returns></returns>
         public IAnswer GetAnswer()
         {
             return Answer ?? (Answer = new IAnswer());
         }
-        #endregion
 
+        #endregion
 
         #region Question
+
         //问题上下文单例
-        protected Models.Adapter.IQuestion Question;
+        protected IQuestion Question;
 
         /// <summary>
-        /// 获取问题上下文
+        ///     获取问题上下文
         /// </summary>
         /// <returns></returns>
-        public Models.Adapter.IQuestion GetQuestion()
+        public IQuestion GetQuestion()
         {
-            return Question ?? (Question = new Adapter.IQuestion());
+            return Question ?? (Question = new IQuestion());
         }
+
         #endregion
 
-
         #region ITest_question
+
         //数据库上下文单例
-        protected Models.Adapter.ITest_question ITest_question;
+        protected ITest_question ITest_question;
 
         /// <summary>
-        /// 获取数据库上下文
+        ///     获取数据库上下文
         /// </summary>
         /// <returns></returns>
-        public Models.Adapter.ITest_question GetITest_question()
+        public ITest_question GetITest_question()
         {
-            return ITest_question ?? (ITest_question = new Adapter.ITest_question());
+            return ITest_question ?? (ITest_question = new ITest_question());
         }
+
         #endregion
 
         #region IPart
+
         //数据库上下文单例
-        protected Models.Adapter.IPart IPart;
+        protected IPart IPart;
 
         /// <summary>
-        /// 获单元上下文
+        ///     获单元上下文
         /// </summary>
         /// <returns></returns>
-        public Models.Adapter.IPart GetIPart()
+        public IPart GetIPart()
         {
-            return IPart ?? (IPart = new Adapter.IPart());
+            return IPart ?? (IPart = new IPart());
         }
-        #endregion
 
+        #endregion
     }
 }

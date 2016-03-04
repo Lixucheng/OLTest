@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using OnlineLearning.Models.Helper;
 
 namespace OnlineLearning.Models.Adapter
 {
-    public class IScore:Models.Adapter.IAdapter
-    {   
+    public class IScore : IAdapter
+    {
         //判断studentid等是否输入的函数还未完成，完成后将-1等替代
+
         #region 创建新成绩 +int Add(int studentid=-1,int testid=-1,double score=-1
+
         /// <summary>
-        /// 创建新成绩   
-        /// sgt.GetStudentAdapter().StudentExist(studentid)未实现
-        /// sgt.GetTestAdapter().TestExist(testid)未实现
+        ///     创建新成绩
+        ///     sgt.GetStudentAdapter().StudentExist(studentid)未实现
+        ///     sgt.GetTestAdapter().TestExist(testid)未实现
         /// </summary>
         /// <param name="studentid">学生id</param>
         /// <param name="testid">测试id</param>
         /// <param name="scroe">学生成绩</param>
         /// <returns></returns>
-        public int Add(int studentid=-1,int testid=-1,double score=-1 ,string testname="")
-        {   
+        public int Add(int studentid = -1, int testid = -1, double score = -1, string testname = "")
+        {
             //学生Id不能为空
-            if(studentid==-1)
+            if (studentid == -1)
             {
                 throw new Exception("StudentId为空!");
             }
@@ -38,7 +39,7 @@ namespace OnlineLearning.Models.Adapter
                 throw new Exception("Score为空！");
             }
             //此函数还未实现 用于判断是否存在testid对应测试
-            if(Sgt.GetTest().TestExist(testid)==false)
+            if (Sgt.GetTest().TestExist(testid) == false)
             {
                 throw new Exception("不存在该测试！");
             }
@@ -49,12 +50,12 @@ namespace OnlineLearning.Models.Adapter
             //}
 
             var tmp = Db.Score.FirstOrDefault(e => e.StudentId == studentid && e.TestId == testid);
-            if(tmp!=null)
+            if (tmp != null)
             {
                 throw new Exception("已存在该数据！");
             }
 
-            var iscore = new Score()
+            var iscore = new Score
             {
                 StudentId = studentid,
                 TestId = testid,
@@ -65,11 +66,13 @@ namespace OnlineLearning.Models.Adapter
             Db.SaveChanges();
             return iscore.Id;
         }
+
         #endregion
 
         #region 删除成绩 +bool Remove(int keyid)
+
         /// <summary>
-        /// 删除成绩
+        ///     删除成绩
         /// </summary>
         /// <param name="id">keyid</param>
         /// <returns></returns>
@@ -85,11 +88,13 @@ namespace OnlineLearning.Models.Adapter
             Db.SaveChanges();
             return true;
         }
+
         #endregion
 
         #region 修改成绩 +bool Update(int id = -1, int studentid = -1, int testid = -1, double score = -1)
+
         /// <summary>
-        /// 修改成绩
+        ///     修改成绩
         /// </summary>
         /// <param name="id">keyid</param>
         /// <param name="studentid">学生id</param>
@@ -97,7 +102,7 @@ namespace OnlineLearning.Models.Adapter
         /// <param name="score">成绩</param>
         /// <returns></returns>
         public bool Update(int id = -1, int studentid = -1, int testid = -1, double score = -1)
-        {   
+        {
             //keyid不能为空
             if (id == -1)
             {
@@ -125,58 +130,63 @@ namespace OnlineLearning.Models.Adapter
                 throw new Exception("不存在欲修改的数据！");
             }
 
-           iscore.StudentId = studentid;
-           iscore.TestId = testid;
-           iscore.Score1 = score;
+            iscore.StudentId = studentid;
+            iscore.TestId = testid;
+            iscore.Score1 = score;
 
-           Db.Entry(iscore).State = EntityState.Modified;
-           Db.SaveChanges();
-           return true;
+            Db.Entry(iscore).State = EntityState.Modified;
+            Db.SaveChanges();
+            return true;
         }
+
         #endregion
 
         #region 凭keyid查找成绩项 + Models.Score Find(int keyid=-1)
+
         /// <summary>
-        /// 凭keyid查找成绩项
+        ///     凭keyid查找成绩项
         /// </summary>
         /// <param name="id">keyid</param>
         /// <returns></returns>
-         public Models.Score Find(int keyid=-1)
-         {
-             //keyid不能为空
-             if (keyid == -1)
+        public Score Find(int keyid = -1)
+        {
+            //keyid不能为空
+            if (keyid == -1)
             {
                 throw new Exception("keyid为空！");
             }
             return Db.Score.Find(keyid);
-         }
+        }
+
         #endregion
 
         #region 返回所有testid相同的成绩项 +List<Models.Score> GetAllTestidList(int testid=-1)
-         /// <summary>
-        /// 返回所有testid相同的成绩项
+
+        /// <summary>
+        ///     返回所有testid相同的成绩项
         /// </summary>
         /// <param name="testid">测试id</param>
         /// <returns></returns>
-        public List<Models.Score> GetAllTestidList(int testid=-1)
-         {
-             //测试Id不能为空
-             if (testid == -1)
-             {
-                 throw new Exception("TestId为空!");
-             }
-             return Db.Score.Where(e => e.TestId == testid).ToList();
+        public List<Score> GetAllTestidList(int testid = -1)
+        {
+            //测试Id不能为空
+            if (testid == -1)
+            {
+                throw new Exception("TestId为空!");
+            }
+            return Db.Score.Where(e => e.TestId == testid).ToList();
+        }
 
-         }
-         #endregion
+        #endregion
 
         #region 返回studentid对应学生的所有成绩项 +List<Models.Score> GetAScoreByStudentid(int studentid=-1)
+
         /// <summary>
-        /// 返回studentid对应学生的所有成绩项
+        ///     返回studentid对应学生的所有成绩项
         /// </summary>
         /// <param name="studentid">学生id</param>
         /// <returns></returns>
-        public List<Models.Score> GetAScoreByStudentid(int studentid=-1) 
+        public List<Score> GetAScoreByStudentid(int studentid = -1)
         {
             //student不能为空
             if (studentid == -1)
@@ -186,15 +196,17 @@ namespace OnlineLearning.Models.Adapter
 
             return Db.Score.Where(e => e.StudentId == studentid).ToList();
         }
+
         #endregion
 
         #region 返回所有成绩为score的成绩项 +List<Models.Score> GetAllScoreList(double score=-1)
+
         /// <summary>
-        /// 返回所有成绩为score的成绩项
+        ///     返回所有成绩为score的成绩项
         /// </summary>
         /// <param name="score">成绩</param>
         /// <returns></returns>
-        public List<Models.Score> GetAllScoreList(double score=-1) 
+        public List<Score> GetAllScoreList(double score = -1)
         {
             //score不能为空
             if (score == -1)
@@ -207,7 +219,7 @@ namespace OnlineLearning.Models.Adapter
 
         #endregion
 
-        public double GetOneScore(int stuid,int testid)
+        public double GetOneScore(int stuid, int testid)
         {
             var firstOrDefault = Db.Score.FirstOrDefault(e => e.StudentId == stuid && e.TestId == testid);
             if (firstOrDefault != null)
@@ -220,9 +232,11 @@ namespace OnlineLearning.Models.Adapter
             var firstOrDefault = Db.Score.FirstOrDefault(e => e.StudentId == stuid && e.TestId == testid);
             if (firstOrDefault != null)
                 return firstOrDefault;
-            return new Score()
+            return new Score
             {
-                Score1 = -1,TestId=testid,StudentId = stuid
+                Score1 = -1,
+                TestId = testid,
+                StudentId = stuid
             };
         }
 
@@ -231,7 +245,7 @@ namespace OnlineLearning.Models.Adapter
         {
             var x = Db.Score.Where(e => e.TestId == testid).ToList();
             var ret = new List<HScore>();
-            x.ForEach(e => ret.Add(new HScore()
+            x.ForEach(e => ret.Add(new HScore
             {
                 Score = e,
                 Account = Sgt.GetAccount().Find(e.StudentId)
@@ -242,17 +256,14 @@ namespace OnlineLearning.Models.Adapter
         public List<HScore> GetClassHScoresWithAccount(string classname, int testid)
         {
             var stu = Sgt.GetAccount().GetAccountsByClassname(classname);
-          
+
             var ret = new List<HScore>();
-            stu.ForEach(e => ret.Add(new HScore()
+            stu.ForEach(e => ret.Add(new HScore
             {
-              Account = e,
-              Score = FindScore(e.Id,testid)
+                Account = e,
+                Score = FindScore(e.Id, testid)
             }));
             return ret;
         }
-
-
     }
-
 }

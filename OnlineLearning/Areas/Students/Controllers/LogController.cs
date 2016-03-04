@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using OnlineLearning.Areas.Common.Controllers;
 using OnlineLearning.Attributes;
 
@@ -11,7 +7,7 @@ namespace OnlineLearning.Areas.Students.Controllers
     public class LogController : BaseController
     {
         // GET: Students/Log
-       
+
         [Public]
         public ActionResult SLogin()
         {
@@ -21,8 +17,8 @@ namespace OnlineLearning.Areas.Students.Controllers
         [HttpGet]
         public ActionResult UpdatePassword()
         {
-            int id = GetStudentId();
-            var user=Sgt.GetAccount().Find(id);
+            var id = GetStudentId();
+            var user = Sgt.GetAccount().Find(id);
             ViewBag.Old = user.Password;
             return View();
         }

@@ -1,72 +1,68 @@
+﻿p { display: inline-block; }
 
-p {
-    display: inline-block;
-}
+p:first-child { display: block; }
 
-p:first-child {
-    display: block;
-}
-.table{
-    position: relative;
-    padding-left: 20px;
-    width: auto;
+.table {
     border-bottom: solid;
     border-spacing: 2px;
-
     font-size: xx-small;
+    padding-left: 20px;
+    position: relative;
 
-}
-#score{
     width: auto;
 }
 
+#score { width: auto; }
 
-#uploader-demo{
-    position:relative;
-    left:30%;
+
+#uploader-demo {
+    left: 30%;
+    position: relative;
 }
 
-.time-item{
-    position:fixed;
-    top: 12%;
+.time-item {
+    position: fixed;
     right: 0%;
+    top: 12%;
 }
+
 h1 {
-    font-family:"微软雅黑";
-    font-size:20px;
-    margin:20px 0;
-    border-bottom:solid 1px #ccc;
-    padding-bottom:20px;
-    letter-spacing:2px;
+    border-bottom: solid 1px #ccc;
+    font-family: "微软雅黑";
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 20px 0;
+    padding-bottom: 20px;
 }
+
 .time-item strong {
-    background:darkgray;
-    color:#fff;
-    line-height:49px;
-    font-size:18px;
-    font-family:Arial;
-    padding:0 10px;
-    margin-right:10px;
-    border-radius:5px;
-    box-shadow:1px 1px 3px rgba(0,0,0,0.2);
+    background: darkgray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-family: Arial;
+    font-size: 18px;
+    line-height: 49px;
+    margin-right: 10px;
+    padding: 0 10px;
 }
 
 .item-title .unit {
-    background:none;
-    line-height:49px;
-    font-size:12px;
-    padding:0 10px;
-    float:left;
+    background: none;
+    float: left;
+    font-size: 12px;
+    line-height: 49px;
+    padding: 0 10px;
 }
-#submit{
-    font-family:"微软雅黑";
-    font-size: 7px;
-    float:right;
 
+#submit {
+    float: right;
+    font-family: "微软雅黑";
+    font-size: 7px;
 }
-#check{
-    font-family:"微软雅黑";
-    font-size: 7px;
-    float:right;
 
+#check {
+    float: right;
+    font-family: "微软雅黑";
+    font-size: 7px;
 }

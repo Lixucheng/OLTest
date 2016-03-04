@@ -2,23 +2,20 @@
 
 namespace OnlineLearning.Areas.Students
 {
-    public class StudentsAreaRegistration : AreaRegistration 
+    public class StudentsAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
-            {
-                return "Students";
-            }
+            get { return "Students"; }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Students_default",
                 "Students/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                new {action = "Index", id = UrlParameter.Optional}
+                );
         }
     }
 }

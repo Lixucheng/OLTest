@@ -1,19 +1,20 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Add";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 @section head
 {
-    <link href="~/Scripts/bower_components/fex-webuploader/dist/webuploader.css" rel="stylesheet" />
-    <link href="~/Scripts/bower_components/fontawesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Scripts/bower_components/simditor/styles/simditor.css" rel="stylesheet" />
-    <link href="~/Scripts/bower_components/simditor-emoji/styles/simditor-emoji.css" rel="stylesheet" />
+    <link href="~/Scripts/bower_components/fex-webuploader/dist/webuploader.css" rel="stylesheet"/>
+    <link href="~/Scripts/bower_components/fontawesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="~/Scripts/bower_components/simditor/styles/simditor.css" rel="stylesheet"/>
+    <link href="~/Scripts/bower_components/simditor-emoji/styles/simditor-emoji.css" rel="stylesheet"/>
 }
 
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加试题</strong> / <small>AddQuestions</small></div>
+    <div class="am-fl am-cf">
+        <strong class="am-text-primary am-text-lg">添加试题</strong> / <small>AddQuestions</small>
+    </div>
 </div>
 
 <div class="am-g">
@@ -34,17 +35,17 @@
                 </div>
                 <div class="am-btn-group am-btn-group-xs">
                     <button type="button" class="am-btn am-btn-default" id="b4"><span class="am-icon-plus"></span> D选项</button>
-                </div>      
-            </div>          
+                </div>
+            </div>
         </div>
 
     </div>
-    <form class="am-form am-form-inline" style="display:inline-block;height:30px">
+    <form class="am-form am-form-inline" style="display: inline-block; height: 30px">
         <div class="am-form-group " style="margin-bottom: 0">
             <input type="number" id="score" placeholder="请输入分值" required>
         </div>
-        <div class="am-form-group " style="margin-bottom: 0;width: 100px">
-            <select  required  id="answer">
+        <div class="am-form-group " style="margin-bottom: 0; width: 100px">
+            <select required id="answer">
                 <option value="A">A</option>
                 <option value="B">B</option>
                 <option value="C">C</option>
@@ -59,10 +60,10 @@
 <br/>
 <div class="am-g">
     <div class=" am-u-sm-centered">
-         
+
         <textarea rows="5" placeholder="请输入内容" id="editor" autofocus></textarea>
         <br/>
-        <button type="button" id="submit" class="am-btn am-btn-primary am-radius" style="position: absolute;right: 5%;bottom: 0">提交</button>
+        <button type="button" id="submit" class="am-btn am-btn-primary am-radius" style="bottom: 0; position: absolute; right: 5%;">提交</button>
 
         <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
     </div>
@@ -70,18 +71,18 @@
 
 @section scripts
 {
-    
+
     <script src="~/Scripts/bower_components/fex-webuploader/dist/webuploader.js"></script>
     <script src="~/Scripts/bower_components/simple-module/lib/module.js"></script>
     <script src="~/Scripts/bower_components/simple-hotkeys/lib/hotkeys.js"></script>
-    
+
     <script src="~/Scripts/bower_components/simple-uploader/lib/uploader.js"></script>
     <script src="~/Scripts/bower_components/simditor/lib/simditor.js"></script>
     <script src="~/Scripts/bower_components/simditor-emoji/lib/simditor-emoji.js"></script>
     <script src="~/Scripts/bower_components/simditor-markdown/lib/simditor-markdown.js"></script>
 
     <script>
-        $(function () {
+        $(function() {
             var t = $("#editor");
             var t0 = [""];
             var t1 = [""];
@@ -89,54 +90,48 @@
             var t3 = [""];
             var t4 = [""];
             var score = $("#score");
-            var trueop =$("#answer");
+            var trueop = $("#answer");
             var nowT = t0;
-            $("#b0").click(function () {
-                nowT[0]= t.val();
+            $("#b0").click(function() {
+                nowT[0] = t.val();
                 nowT = t0;
                 editor.setValue(t0);
             });
-            $("#b1").click(function () {
+            $("#b1").click(function() {
                 nowT[0] = t.val();
                 nowT = t1;
                 editor.setValue(t1);
             });
-            $("#b2").click(function () {
+            $("#b2").click(function() {
                 nowT[0] = t.val();
                 nowT = t2;
                 editor.setValue(t2);
             });
-            $("#b3").click(function () {
+            $("#b3").click(function() {
                 nowT[0] = t.val();
                 nowT = t3;
                 editor.setValue(t3);
             });
-            $("#b4").click(function () {
+            $("#b4").click(function() {
                 nowT[0] = t.val();
                 nowT = t4;
                 editor.setValue(t4);
             });
-            $("#submit").click(function () {
+            $("#submit").click(function() {
                 nowT[0] = t.val();
                 if (t0 == [""]) {
                     alert("题目不能为空");
-                }
-                else if (t1 == [""]) {
+                } else if (t1 == [""]) {
                     alert("A选项不能为空");
-                }
-                else if (t2 == [""]) {
+                } else if (t2 == [""]) {
                     alert("B选项不能为空");
-                }
-                else if (t3 == [""]) {
+                } else if (t3 == [""]) {
                     alert("C选项不能为空");
-                }
-                else if (t4 == [""]) {
+                } else if (t4 == [""]) {
                     alert("D选项不能为空");
-                }
-                else if (score.val()==0) {
+                } else if (score.val() == 0) {
                     alert("分值不能为空");
-                }
-                else if (trueop.val() == [""]) {
+                } else if (trueop.val() == [""]) {
                     alert("答案不能为空");
                 } else {
                     $.ajax({
@@ -150,7 +145,7 @@
                             correctop: trueop.val(),
                             score: score.val()
                         },
-                        success: function (res) {
+                        success: function(res) {
                             if (res == 0) {
                                 alert("添加失败");
                             } else {
@@ -158,15 +153,15 @@
                                 window.location.href = "/Admin/Questions/Add";
                             }
                         }
-                        
+
                     });
                 }
-                
+
             });
 
         });
     </script>
-    
+
     <script>
         var editor = new Simditor({
             textarea: $('#editor'),
@@ -200,4 +195,3 @@
     </script>
 
 }
-

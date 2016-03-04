@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Microsoft.Ajax.Utilities;
 
 namespace OnlineLearning.Models.Adapter
 {
-    public class ITest:IAdapter
+    public class ITest : IAdapter
     {
         /// <summary>
-        /// 查看id是否存在
+        ///     查看id是否存在
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -20,7 +18,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         /// <summary>
-        /// 查询
+        ///     查询
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -35,14 +33,14 @@ namespace OnlineLearning.Models.Adapter
         }
 
         /// <summary>
-        /// 添加
+        ///     添加
         /// </summary>
         /// <param name="x"></param>
         /// <param name="time"></param>
         /// <returns></returns>
-        public bool Add(String x,TimeSpan time)
+        public bool Add(string x, TimeSpan time)
         {
-            if (String.IsNullOrEmpty(x))
+            if (string.IsNullOrEmpty(x))
             {
                 throw new Exception("name不能为空");
             }
@@ -55,21 +53,21 @@ namespace OnlineLearning.Models.Adapter
             {
                 throw new Exception("不能重复");
             }
-            var t=new Test {Name = x,Time = time};
+            var t = new Test {Name = x, Time = time};
             Db.Test.Add(t);
             Db.SaveChanges();
             return true;
         }
 
         /// <summary>
-        /// 删除
+        ///     删除
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public bool Del(int id)
         {
             var x = Db.Test.Find(id);
-            if (x==null)
+            if (x == null)
                 throw new Exception("没有你删啥！");
             Db.Test.Remove(x);
             Sgt.GetITest_question().DelTest(id);
@@ -78,7 +76,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         /// <summary>
-        /// 修改
+        ///     修改
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
@@ -89,14 +87,14 @@ namespace OnlineLearning.Models.Adapter
             var x = Db.Test.Find(id);
             if (x == null)
                 throw new Exception("没有你改啥！");
-            if (String.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
             {
                 throw new Exception("name不能为空");
             }
             if (time == TimeSpan.Zero)
             {
                 throw new Exception("时间不能为0");
-            }      
+            }
             x.Name = name;
             x.Time = time;
             Db.SaveChanges();
@@ -104,8 +102,9 @@ namespace OnlineLearning.Models.Adapter
         }
 
         #region 返回一个test的习题
+
         /// <summary>
-        /// 返回一个test的习题
+        ///     返回一个test的习题
         /// </summary>
         /// <param name="testid"></param>
         /// <returns></returns>
@@ -113,10 +112,11 @@ namespace OnlineLearning.Models.Adapter
         {
             return Sgt.GetITest_question().GetQuestionsByTestId(testid);
         }
+
         #endregion
 
         /// <summary>
-        /// 获取所有习题
+        ///     获取所有习题
         /// </summary>
         /// <returns></returns>
         public List<Test> GetTests()
@@ -125,7 +125,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         /// <summary>
-        /// 提交之后计算分数
+        ///     提交之后计算分数
         /// </summary>
         /// <param name="testid"></param>
         /// <param name="studentid"></param>
@@ -133,19 +133,18 @@ namespace OnlineLearning.Models.Adapter
         {
             var right = 0;
             var questions = GetQuestionsByTestId(testid);
-            int sco=0;
+            int sco = 0;
             questions.ForEach(e =>
             {
                 var answer = Sgt.GetAnswer().FindByAllid(testid, e.Id, studentid);
-                if (answer.Answer1==e.correct_op)
+                if (answer.Answer1 == e.correct_op)
                 {
                     sco += e.score;
                     right++;
                 }
             });
-            Sgt.GetScore().Add(studentid, testid, sco,Sgt.GetTest().Find(testid).Name);
+            Sgt.GetScore().Add(studentid, testid, sco, Sgt.GetTest().Find(testid).Name);
             return right;
         }
     }
-
 }

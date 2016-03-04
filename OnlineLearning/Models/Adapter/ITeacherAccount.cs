@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 
 namespace OnlineLearning.Models.Adapter
 {
-    public class ITeacherAccount:Models.Adapter.IAdapter
+    public class ITeacherAccount : IAdapter
     {
-
         //增加用户
-        public bool Add(Models.TeacherAccount teacher)
+        public bool Add(TeacherAccount teacher)
         {
             if (teacher.Name == null || teacher.PassWord == null)
             {
@@ -22,7 +19,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         //删除用户：通过模型删除
-        public bool Remove(Models.TeacherAccount teacher)
+        public bool Remove(TeacherAccount teacher)
         {
             var x = Db.TeacherAccount.Find(teacher.ID);
             if (x == null)
@@ -33,6 +30,7 @@ namespace OnlineLearning.Models.Adapter
             Db.SaveChanges();
             return true;
         }
+
         ////删除用户：通过ID删除
         public bool Remove(long id)
         {
@@ -45,6 +43,7 @@ namespace OnlineLearning.Models.Adapter
             Db.SaveChanges();
             return true;
         }
+
         //删除用户：通过Name删除
         public bool Remove(string name)
         {
@@ -59,7 +58,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         //更改信息
-        public bool Update(Models.TeacherAccount teacher)
+        public bool Update(TeacherAccount teacher)
         {
             var x = Db.TeacherAccount.Find(teacher.ID);
             if (x == null)
@@ -82,7 +81,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         //寻找用户:通过ID查找
-        public Models.TeacherAccount Find(long id)
+        public TeacherAccount Find(long id)
         {
             var x = Db.TeacherAccount.Find(id);
             if (x == null)
@@ -93,7 +92,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         //寻找用户:通过Name查找
-        public Models.TeacherAccount Find(string name)
+        public TeacherAccount Find(string name)
         {
             var x = Db.TeacherAccount.FirstOrDefault(e => e.Name == name);
             if (x == null)

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using OnlineLearning.Areas.Common.Controllers;
 using OnlineLearning.Attributes;
-using OnlineLearning.Models;
 
 namespace OnlineLearning.Areas.Admin.Controllers
 {
@@ -53,7 +49,6 @@ namespace OnlineLearning.Areas.Admin.Controllers
         }
 
 
-
         //给试题添加习题
         [HttpGet]
         public ActionResult Test_addquestions(int id)
@@ -75,7 +70,7 @@ namespace OnlineLearning.Areas.Admin.Controllers
 
         public int Test_delquestions(int testid, int questid)
         {
-            return Sgt.GetITest_question().Del(testid, questid)?1:0;
+            return Sgt.GetITest_question().Del(testid, questid) ? 1 : 0;
         }
 
         //查看一个test的习题
@@ -104,7 +99,7 @@ namespace OnlineLearning.Areas.Admin.Controllers
         public ActionResult GetClassScore(int id, string classname)
         {
             ViewBag.id = id;
-            var list = Sgt.GetScore().GetClassHScoresWithAccount(classname,id);
+            var list = Sgt.GetScore().GetClassHScoresWithAccount(classname, id);
             ViewBag.list = list;
             ViewBag.count = list.Count;
             ViewBag.Class = Sgt.GetAccount().GetClassNames();

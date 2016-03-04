@@ -5,39 +5,39 @@
 }
 
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">待完成考试</strong> / <small>Test</small></div>
+    <div class="am-fl am-cf">
+        <strong class="am-text-primary am-text-lg">待完成考试</strong> / <small>Test</small>
+    </div>
 </div>
 
 <table class="am-table am-table-striped am-table-hover table-main" id="table">
-     <thead>
-               <tr>           
-                   <th class="table-name" style="padding-left:40px;">名字</th>
-                   <th class="table-date">考试时间</th>
-                   <th class="table-set">操作</th>
-               </tr>
-           </thead>
-     <tbody id="itemContainer">
-         @{
-             if (ViewBag.count == 0)
-             {
-                 <ul>没有考试信息！</ul>
-             }
-            foreach (var Tempx in ViewBag.test)
-            {
-
-                <tr id="@Tempx.ID">
-                    <td class="edit noer" style="padding-left: 30px;"> @Tempx.Name</td>
-                    <td class="edit captioner">@Tempx.Time</td>
-                    <td>
-                        <div class="am-btn-toolbar">
-                            <div class="am-btn-group am-btn-group-xs">
-                                <a href="/Students/Index/test/@Tempx.ID" class=" am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span>开始考试</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            }
+    <thead>
+    <tr>
+        <th class="table-name" style="padding-left: 40px;">名字</th>
+        <th class="table-date">考试时间</th>
+        <th class="table-set">操作</th>
+    </tr>
+    </thead>
+    <tbody id="itemContainer">
+    @{
+        if (ViewBag.count == 0)
+        {
+            <ul>没有考试信息！</ul>
         }
+        foreach (var Tempx in ViewBag.test)
+        {
+            <tr id="@Tempx.ID">
+                <td class="edit noer" style="padding-left: 30px;"> @Tempx.Name</td>
+                <td class="edit captioner">@Tempx.Time</td>
+                <td>
+                    <div class="am-btn-toolbar">
+                        <div class="am-btn-group am-btn-group-xs">
+                            <a href="/Students/Index/test/@Tempx.ID" class=" am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span>开始考试</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
     </tbody>
 </table>
-

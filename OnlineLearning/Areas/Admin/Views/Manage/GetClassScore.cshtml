@@ -1,42 +1,38 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "GetClassScore";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 @section head{
-    <link href="~/Scripts/bower_components/jPages/css/jPages.css" rel="stylesheet" />
-    <link href="~/Scripts/bower_components/jPages/css/animate.css" rel="stylesheet" />
+    <link href="~/Scripts/bower_components/jPages/css/jPages.css" rel="stylesheet"/>
+    <link href="~/Scripts/bower_components/jPages/css/animate.css" rel="stylesheet"/>
     <style>
-        .edit, .editer {
-            width: 200px;
-        }
+        .edit, .editer { width: 200px; }
 
-        .table-no {
-            border-left: 30px;
-        }
+        .table-no { border-left: 30px; }
 
         .am-u-sm-10 {
             padding-left: 5px;
             padding-top: 10px;
         }
 
-        .am-form {
-            margin-top: 30px;
-        }
+        .am-form { margin-top: 30px; }
+
         .sele {
-            width: 100px;
             padding-left: 20px;
+            width: 100px;
         }
     </style>
 }
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">@ViewBag.test</strong> / <small> 成绩单</small></div>
+    <div class="am-fl am-cf">
+        <strong class="am-text-primary am-text-lg">@ViewBag.test</strong> / <small> 成绩单</small>
+    </div>
 </div>
 
 <div class="am-g am-inline">
     <form class=" am-form am-form-inline" role="form" method="POST" action="/admin/manage/Getclassscore" id="addform">
-        <input name="id" value="@ViewBag.id" hidden="hidden" />
+        <input name="id" value="@ViewBag.id" hidden="hidden"/>
         <div class="am-form-group am-form-select sele">
             <select id="doc-select-1" name="classname">
                 @foreach (var temp in ViewBag.Class)
@@ -55,41 +51,41 @@
         <form class="am-form">
             <table class="am-table am-table-striped am-table-hover table-main" id="table">
                 <thead>
-                    <tr>
-                        <th class="table-name">名字</th>
-                        <th class="table-name">学号</th>
-                        <th class="table-name">班级</th>
-                        <th class="table-date">分数</th>
-     
-                    </tr>
+                <tr>
+                    <th class="table-name">名字</th>
+                    <th class="table-name">学号</th>
+                    <th class="table-name">班级</th>
+                    <th class="table-date">分数</th>
+
+                </tr>
                 </thead>
                 <tbody id="itemContainer">
-                    @if (ViewBag.count == 0)
+                @if (ViewBag.count == 0)
+                {
+                    @: 无信息！
+                }
+                else
+                {
+                    var i = 1;
+                    foreach (var Tempx in ViewBag.list)
                     {
-                        @: 无信息！
+                        <tr id="">
+                            <td hidden="hidden" class="ider"> </td>
+                            <td class="">@Tempx.Account.Name</td>
+                            <td class="">@Tempx.Account.StudentNum</td>
+                            <td class="">@Tempx.Account.Class</td>
+                            @if (Tempx.Score.Score1 == -1)
+                            {
+                                <td class="edit timeer">没有成绩</td>
+                            }
+                            else
+                            {
+                                <td class="edit timeer">@Tempx.Score.Score1</td>
+                            }
+                        </tr>
+                        i++;
                     }
-                    else
-                    {
-                        int i = 1;
-                        foreach (var Tempx in ViewBag.list)
-                        {
-                            <tr id="">
-                                <td hidden="hidden" class="ider"> </td>
-                                <td class="">@Tempx.Account.Name</td>
-                                <td class="">@Tempx.Account.StudentNum</td>
-                                <td class="">@Tempx.Account.Class</td>
-                                @if (Tempx.Score.Score1 == -1)
-                                {
-                                    <td class="edit timeer">没有成绩</td>
-                                }
-                                else
-                                {
-                                    <td class="edit timeer">@Tempx.Score.Score1</td>
-                                }
-                            </tr>
-                                i++;
-                        }
-                    }
+                }
                 </tbody>
             </table>
             <div class="am-cf">
@@ -98,7 +94,7 @@
                     <div class="holder am-pagination"></div>
                 </div>
             </div>
-            <hr />
+            <hr/>
             <p id="xxx">注：哇哈哈哈哈哈哈哈</p>
         </form>
     </div>
@@ -113,7 +109,7 @@
     <script>
 
 
-        $(function () {
+        $(function() {
             $("#table").tablesorter({ sortList: [[1, 0]] });
             $("div.holder").jPages({
                 containerID: "itemContainer",
@@ -124,4 +120,3 @@
         });
     </script>
 }
-

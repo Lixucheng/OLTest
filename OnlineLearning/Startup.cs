@@ -1,7 +1,9 @@
 ﻿using Microsoft.Owin;
+using OnlineLearning;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(OnlineLearning.Startup))]
+[assembly: OwinStartup(typeof (Startup))]
+
 namespace OnlineLearning
 {
     public partial class Startup

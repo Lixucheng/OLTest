@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using OnlineLearning.Models.Helper;
 
 namespace OnlineLearning.Models.Adapter
 {
-    public class ITest_question  :IAdapter
+    public class ITest_question : IAdapter
     {
-
         /// <summary>
-        /// 添加
+        ///     添加
         /// </summary>
         /// <param name="testid"></param>
         /// <param name="questionid"></param>
@@ -30,14 +28,14 @@ namespace OnlineLearning.Models.Adapter
             {
                 throw new Exception("重复添加");
             }
-            var testQuestion=new Test_question {QuestionId = questionid, TestId = testid};
+            var testQuestion = new Test_question {QuestionId = questionid, TestId = testid};
             Db.Test_question.Add(testQuestion);
             Db.SaveChanges();
             return true;
         }
 
         /// <summary>
-        /// 修改
+        ///     修改
         /// </summary>
         /// <param name="id"></param>
         /// <param name="testid"></param>
@@ -54,7 +52,7 @@ namespace OnlineLearning.Models.Adapter
                 throw new Exception("不存在此test");
             }
             var x = Db.Test_question.Find(id);
-            if (x==null)
+            if (x == null)
             {
                 throw new Exception("没有你改什么！");
             }
@@ -70,7 +68,7 @@ namespace OnlineLearning.Models.Adapter
         }
 
         /// <summary>
-        /// 删除
+        ///     删除
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -86,7 +84,7 @@ namespace OnlineLearning.Models.Adapter
             return true;
         }
 
-        public bool Del(int testid, int questid )
+        public bool Del(int testid, int questid)
         {
             var x = Db.Test_question.FirstOrDefault(e => e.TestId == testid && e.QuestionId == questid);
             if (x == null)
@@ -100,7 +98,7 @@ namespace OnlineLearning.Models.Adapter
 
         public bool DelTest(int testid)
         {
-            var x=Db.Test_question.Where(e => e.TestId == testid).ToList();
+            var x = Db.Test_question.Where(e => e.TestId == testid).ToList();
             Db.Test_question.RemoveRange(x);
             Db.SaveChanges();
             return true;
@@ -113,8 +111,9 @@ namespace OnlineLearning.Models.Adapter
             Db.SaveChanges();
             return true;
         }
+
         /// <summary>
-        /// 返回一个Test的习题
+        ///     返回一个Test的习题
         /// </summary>
         /// <param name="testid"></param>
         /// <returns></returns>
@@ -125,6 +124,7 @@ namespace OnlineLearning.Models.Adapter
             list.ForEach(e => ret.Add(Sgt.GetQuestion().GetHQuestionById(e.QuestionId)));
             return ret;
         }
+
         public List<Question> GetQuestionsByTestId(int testid)
         {
             var list = Db.Test_question.Where(e => e.TestId == testid).ToList();
@@ -132,6 +132,5 @@ namespace OnlineLearning.Models.Adapter
             list.ForEach(e => ret.Add(Sgt.GetQuestion().Find(e.QuestionId)));
             return ret;
         }
-       
     }
 }

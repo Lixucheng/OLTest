@@ -1,32 +1,27 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "GetAll";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 @section head{
-    <link href="~/Scripts/bower_components/jPages/css/jPages.css" rel="stylesheet" />
-    <link href="~/Scripts/bower_components/jPages/css/animate.css" rel="stylesheet" />
+    <link href="~/Scripts/bower_components/jPages/css/jPages.css" rel="stylesheet"/>
+    <link href="~/Scripts/bower_components/jPages/css/animate.css" rel="stylesheet"/>
     <style>
-        .edit, .editer {
-            width: 200px;
-        }
+        .edit, .editer { width: 200px; }
 
-        .table-no {
-            border-left: 30px;
-        }
+        .table-no { border-left: 30px; }
 
         .am-u-sm-10 {
             padding-left: 5px;
             padding-top: 10px;
         }
 
-        .am-form {
-            margin-top: 30px;
-        }
+        .am-form { margin-top: 30px; }
     </style>
 }
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">试题</strong> / <small>Table</small></div>
+    <div class="am-fl am-cf">
+        <strong class="am-text-primary am-text-lg">试题</strong> / <small>Table</small>
+    </div>
 </div>
 
 <div class="am-g">
@@ -34,38 +29,37 @@
         <form class="am-form">
             <table class="am-table am-table-striped am-table-hover table-main" id="table">
                 <thead>
-                    <tr>
-                        <th class="table-date">题目</th>
-                        <th class="table-set">操作</th>
-                    </tr>
+                <tr>
+                    <th class="table-date">题目</th>
+                    <th class="table-set">操作</th>
+                </tr>
                 </thead>
                 <tbody id="itemContainer">
-                    @if (ViewBag.count == 0)
-                    {
+                @if (ViewBag.count == 0)
+                {
                         @*@: 无信息！*@
-                    }
-                    else
+                }
+                else
+                {
+                    var i = 1;
+                    foreach (var Tempx in ViewBag.list)
                     {
-                        int i = 1;
-                        foreach (var Tempx in ViewBag.list)
-                        {
-
-                            <tr id="@Tempx.Id">
-                                <td hidden="hidden" class="ider"> @Tempx.Id</td>
-                                <td class=" nameer">
-                                    @Tempx.Question1
-                                </td>
-                                <td>
-                                    <div class="am-btn-toolbar">
-                                        <div class="am-btn-group am-btn-group-xs">
-                                            <a onclick="delclick(@Tempx.Id)" id="delbutton" class=" am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
-                                        </div>
+                        <tr id="@Tempx.Id">
+                            <td hidden="hidden" class="ider"> @Tempx.Id</td>
+                            <td class=" nameer">
+                                @Tempx.Question1
+                            </td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <a onclick="delclick(@Tempx.Id)" id="delbutton" class=" am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
                                     </div>
-                                </td>
-                            </tr>
-                            i++;
-                        }
+                                </div>
+                            </td>
+                        </tr>
+                        i++;
                     }
+                }
                 </tbody>
             </table>
             <div class="am-cf">
@@ -73,13 +67,11 @@
                     <div class="holder am-pagination"></div>
                 </div>
             </div>
-            <hr />
+            <hr/>
             <p id="xxx">注：哇哈哈哈哈哈哈哈</p>
         </form>
     </div>
 </div>
-
-
 
 
 @section scripts{
@@ -101,20 +93,19 @@
             });
         };
 
-        $("#addbutton").click(function () { window.location.href = "/Admin/questions/GeyAll"; });
+        $("#addbutton").click(function() { window.location.href = "/Admin/questions/GeyAll"; });
 
-        $(function () {
+        $(function() {
             $("#addform").hide();
-            $("#table").tablesorter({sortList:[[1,0]]});
+            $("#table").tablesorter({ sortList: [[1, 0]] });
             $("div.holder").jPages({
                 containerID: "itemContainer",
                 perPage: 15
             });
 
 
-
             $(".edit").editable({
-                onSubmit: function () {
+                onSubmit: function() {
                     var ider = this.parent().find(".ider").text();
                     var nameer = this.parent().find(".nameer").text();
                     var timeer = this.parent().find(".timeer").text();
@@ -131,14 +122,7 @@
             });
 
 
-
-
-
         });
     </script>
 
 }
-
-
-
-

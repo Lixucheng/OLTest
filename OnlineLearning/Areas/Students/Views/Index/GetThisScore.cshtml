@@ -1,12 +1,10 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "GetThisScore";
     Layout = "~/Areas/students/Views/Shared/_Layout.cshtml";
 }
 
 
-
-<div class="am-g "style="width: 70%;margin-top: 50px">
+<div class="am-g "style="margin-top: 50px; width: 70%;">
     <div class="am-panel am-panel-default">
         <div class="am-panel-bd">
             <div class="user-info">
@@ -14,7 +12,8 @@
                 <div class="am-progress am-progress-sm">
                     <div class="am-progress-bar" style="width: @ViewBag.s1%"></div>
                 </div>
-                <p class="user-info-order">总题数：<strong>@ViewBag.all</strong>    回答题目数：<strong>@ViewBag.answer</strong>     正确题数：<strong>@ViewBag.right</strong>
+                <p class="user-info-order">
+                    总题数：<strong>@ViewBag.all</strong> 回答题目数：<strong>@ViewBag.answer</strong> 正确题数：<strong>@ViewBag.right</strong>
                 </p>
             </div>
             <div class="user-info">
@@ -22,7 +21,8 @@
                 <div class="am-progress am-progress-sm">
                     <div class="am-progress-bar am-progress-bar-success" style="width: @ViewBag.s2%"></div>
                 </div>
-                <p class="user-info-order">最终分数：<strong>@ViewBag.score</strong>  满分：<strong>@ViewBag.scoreall</strong>
+                <p class="user-info-order">
+                    最终分数：<strong>@ViewBag.score</strong> 满分：<strong>@ViewBag.scoreall</strong>
                 </p>
             </div>
         </div>
